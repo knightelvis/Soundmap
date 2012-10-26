@@ -3,6 +3,8 @@ Soundmap::Application.routes.draw do
 
   resources :sounds
 
+ match '/user/sounds', :controller => 'sounds', :action => 'uploadFile'
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
