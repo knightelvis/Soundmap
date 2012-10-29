@@ -41,18 +41,25 @@ class SoundsController < ApplicationController
   # POST /sounds.json
   def create
     @sound = Sound.new(params[:sound])
-	Rails.logger.error 'in create!!'	
+	Rails.logger.error 'display path in create!!!'
+	Rails.logger.error params[:sound][:path]
+	Rails.logger.error 'This is the uploadfile from create'	
+	Rails.logger.error params[:upload]
+	#post = Sound.uploadfile(params[:upload])
 
     respond_to do |format|
       if @sound.save
-        format.html { redirect_to @sound, :notice => 'Sound was successfully created.' }
-        format.json { render :json => @sound, :status => :created, :location => @sound }
+        #format.html { redirect_to @sound, :notice => 'Sound was successfully created.' }
+        #format.json { render :json => @sound, :status => :created, :location => @sound }
+	#format.html { render :action => "new" }
+	format.html {render :action => "uploader"}
       else
         format.html { render :action => "new" }
         format.json { render :json => @sound.errors, :status => :unprocessable_entity }
       end
     end
 	#post = Sound.save(params[:upload])
+	#post = Sound.uploadfile(params[:upload])
   end
 
   # PUT /sounds/1
@@ -84,9 +91,9 @@ class SoundsController < ApplicationController
   end
 
   def uploadFile
-	Rails.logger.error 'in uploadFile!!'
-
-    post = Sound.save(params[:upload])
+	Rails.logger.error 'Display path in uploadFile!!'
+	Rails.logger.error params[:upload]
+    post = Sound.uploadfile(params[:upload])
     render :text => "File has been uploaded successfully"
   end
 end
