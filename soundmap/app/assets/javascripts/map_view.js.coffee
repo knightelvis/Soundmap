@@ -34,7 +34,7 @@ $(document).ready ->
               content: '<strong>Coords:</strong> ' + location_lat + ', ' + location_lng \
               + '<br>Uploaded in <strong>' + location.title + '</strong>' \
               + '<br><button onclick="play(\'' + location.path + '\')" class="btn btn-small btn-primary" id="play' + cid + '"><i class="icon-play icon-white"></i> Play</button>' \
-              + '<br><strong>Track:</strong>' + location.path + '.mp3'
+              + '<br><strong>Track:</strong>' + location.path
 
           cid += 1
 

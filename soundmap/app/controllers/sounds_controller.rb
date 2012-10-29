@@ -45,12 +45,11 @@ class SoundsController < ApplicationController
 
     respond_to do |format|
       if @sound.save
-        format.html { redirect_to sounds_url }
-        #format.html { redirect_to @sound, notice: 'Sound was successfully created.' }
-        #format.json { render json: @sound, status: :created, location: @sound }
+
+        format.html {render :action => "uploader"}
       else
-        format.html { render action: "new" }
-        format.json { render json: @sound.errors, status: :unprocessable_entity }
+        format.html { render :action => "new" }
+        format.json { render :json => @sound.errors, :status => :unprocessable_entity }
       end
     end
   end
@@ -81,5 +80,13 @@ class SoundsController < ApplicationController
       format.html { redirect_to sounds_url }
       format.json { head :no_content }
     end
+  end
+
+  def uploadFile()
+    Rails.logger.error 'Display path in uploadFile!!'
+    Rails.logger.error params[:upload]
+
+    post = Sound.uploadfile(params[:upload])
+    render :text => "File has been uploaded successfully"
   end
 end
