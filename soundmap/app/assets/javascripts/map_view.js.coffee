@@ -42,8 +42,9 @@ $(document).ready ->
         cid = 0
         for location in new_locations
 
-          location_lat = location.location.split(',')[1]
           location_lng = location.location.split(',')[0]
+          location_lat = location.location.split(',')[1]
+
 
           map.addMarker
             lat: location_lat

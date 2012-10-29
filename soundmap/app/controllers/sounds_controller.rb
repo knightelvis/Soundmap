@@ -3,7 +3,6 @@ class SoundsController < ApplicationController
   # GET /sounds.json
   def index
     @sounds = Sound.all
-    @sound = Sound.new #XXL tmp
 
     respond_to do |format|
       format.html # index.html.erb
@@ -45,10 +44,15 @@ class SoundsController < ApplicationController
 
     respond_to do |format|
       if @sound.save
+<<<<<<< HEAD
         #format.html { redirect_to sounds_url }
         format.html { redirect_to map_view_index_path, notice: 'Sound was successfully created.' }
         #format.json { render json: @sound, status: :created, location: @sound }
         #format.html { render :action => "uploader"}
+=======
+
+        format.html {redirect_to map_view_index_path}
+>>>>>>> 377acbc01cf9c556419c22dcb902f07daf02fd34
       else
         format.html { render :action => "new" }
         format.json { render :json => @sound.errors, :status => :unprocessable_entity }
