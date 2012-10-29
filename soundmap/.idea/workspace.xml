@@ -28,19 +28,19 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="seeds.rb" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="seeds.rb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/db/seeds.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="17" column="0" selection-start="1280" selection-end="1280" vertical-scroll-proportion="0.45535713">
+            <state line="17" column="0" selection-start="1280" selection-end="1280" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="sounds_helper.rb" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="sounds_helper.rb" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/helpers/sounds_helper.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="3" column="5" selection-start="85" selection-end="85" vertical-scroll-proportion="0.0">
+            <state line="3" column="5" selection-start="85" selection-end="85" vertical-scroll-proportion="0.07853403">
               <folding />
             </state>
           </provider>
@@ -775,13 +775,6 @@
         <state line="10" column="0" selection-start="205" selection-end="217" vertical-scroll-proportion="0.27322406" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/helpers/sounds_helper.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="3" column="5" selection-start="85" selection-end="85" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/controllers/sounds_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state line="13" column="33" selection-start="290" selection-end="290" vertical-scroll-proportion="0.0">
@@ -833,7 +826,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/db/seeds.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="17" column="0" selection-start="1280" selection-end="1280" vertical-scroll-proportion="0.45535713">
+        <state line="17" column="0" selection-start="1280" selection-end="1280" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/helpers/sounds_helper.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="3" column="5" selection-start="85" selection-end="85" vertical-scroll-proportion="0.07853403">
           <folding />
         </state>
       </provider>
