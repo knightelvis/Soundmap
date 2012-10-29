@@ -46,7 +46,7 @@ class SoundsController < ApplicationController
     respond_to do |format|
       if @sound.save
         format.html { redirect_to sounds_url }
-        #format.html { redirect_to @sound, notice: 'Sound was successfully created.' }
+        format.html { redirect_to @sound, notice: 'Sound was successfully created.' }
         #format.json { render json: @sound, status: :created, location: @sound }
       else
         format.html { render action: "new" }
