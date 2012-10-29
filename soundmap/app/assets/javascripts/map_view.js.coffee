@@ -2,8 +2,18 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
 
+getNewLocations = (previousList, currentList) ->
+  if previousList.length == currentList.length
+    []
+  else
+    currentList.slice previousList.length, currentList.length
+
 
 $(document).ready ->
+
+  first_time = true
+  location_list = []
+
   map = new GMaps
     zoom: 5
     div: '#map'
@@ -16,9 +26,21 @@ $(document).ready ->
       dataType: 'json'
       success: (data) ->
         #alert data
+
+        new_locations = []
+        console.log new_locations.length
+        console.log location_list.length
+        console.log data.length
+
+        if first_time
+          new_locations = data
+        else
+          new_locations = getNewLocations(location_list, data)
+
         location_list = data
+
         cid = 0
-        for location in location_list
+        for location in new_locations
 
           location_lat = location.location.split(',')[1]
           location_lng = location.location.split(',')[0]
@@ -31,17 +53,18 @@ $(document).ready ->
               if map.map.getZoom() < 5
                 map.setZoom 5
             infoWindow:
-              content: '<strong>Coords:</strong> ' + location_lat + ', ' + location_lng \
+              content: '<strong>Coords:</strong> ' + location_lng + ', ' + location_lat \
               + '<br>Uploaded in <strong>' + location.title + '</strong>' \
               + '<br><button onclick="play(\'' + location.path + '\')" class="btn btn-small btn-primary" id="play' + cid + '"><i class="icon-play icon-white"></i> Play</button>' \
-              + '<br><strong>Track:</strong>' + location.path + '.mp3'
+              + '<br><strong>Track:</strong>' + location.path
 
           cid += 1
 
-        mc = new MarkerClusterer(map.map, map.markers)
+        mc = new MarkerClusterer(map.map, map.markers) if first_time
 
-        console.log map.markers
 
-  #setTimeout(reqLocations, 60000 * 5)
+        first_time = false
+
+    setTimeout(reqLocations, 1000 * 5)
 
   reqLocations()

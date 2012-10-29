@@ -2,6 +2,7 @@ Soundmap::Application.routes.draw do
   resources :sounds
   resources :map_view
 
+  match '/user/sounds', :controller => 'sounds', :action => 'uploadFile'
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
@@ -51,7 +52,7 @@ Soundmap::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  root :to => 'sounds#index'
+  root :to => 'map_view#index'
 
   # See how all your routes lay out with "rake routes"
 
