@@ -20,8 +20,9 @@ $(document).ready ->
         cid = 0
         for location in location_list
 
-          location_lat = location.location.split(',')[1]
           location_lng = location.location.split(',')[0]
+          location_lat = location.location.split(',')[1]
+
 
           map.addMarker
             lat: location_lat
@@ -31,7 +32,7 @@ $(document).ready ->
               if map.map.getZoom() < 5
                 map.setZoom 5
             infoWindow:
-              content: '<strong>Coords:</strong> ' + location_lat + ', ' + location_lng \
+              content: '<strong>Coords:</strong> ' + location_lng + ', ' + location_lat \
               + '<br>Uploaded in <strong>' + location.title + '</strong>' \
               + '<br><button onclick="play(\'' + location.path + '\')" class="btn btn-small btn-primary" id="play' + cid + '"><i class="icon-play icon-white"></i> Play</button>' \
               + '<br><strong>Track:</strong>' + location.path
