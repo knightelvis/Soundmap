@@ -1,0 +1,18 @@
+<h1>Listing sounds</h1>
+
+
+
+<% @sounds.each do |sound| %>
+    <div style="background-color: #b0c4de;">
+    <p><b>Title:</b>  <%= sound.title %></p>
+    <p><b>Description:</b>  <%= sound.description %></p>
+    <p><b>Location:</b> <%= sound.location %></p>
+    <p> <audio src="<%= sound.path %>" controls ></audio>  </p>
+    <%= link_to 'Show', sound %>
+   <%= link_to 'Edit', edit_sound_path(sound) %>
+   <%= link_to 'Destroy', sound, method: :delete, data: { confirm: 'Are you sure?' } %>
+   </div>
+<% end %>
+
+<br><br>
+<%= render 'form' %>  <!---- XXL tmp --->
