@@ -19,3 +19,6 @@
 
 # Ignore sound files
 /public/sounds/*.*
+
+.DS_Store
+.mp3
