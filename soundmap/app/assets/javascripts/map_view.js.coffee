@@ -37,11 +37,6 @@ $(document).ready ->
         else
           new_locations = getNewLocations(location_list, data)
 
-        if new_locations.length > 0
-          $('#notice-flash').html "#{new_locations.length} new sounds comming!"
-          $('#notice-flash').fadeIn 'slow', ->
-            $('#notice-flash').fadeOut 'slow'
-
         location_list = data
 
         cid = 0
@@ -58,21 +53,19 @@ $(document).ready ->
               map.map.panTo e.getPosition()
               if map.map.getZoom() < 5
                 map.setZoom 5
-
             infoWindow:
               content: '<strong>Coords:</strong> ' + location_lng + ', ' + location_lat \
               + '<br>Uploaded in <strong>' + location.title + '</strong>' \
               + '<br><button onclick="play(\'' + location.path + '\')" class="btn btn-small btn-primary" id="play' + cid + '"><i class="icon-play icon-white"></i> Play</button>' \
               + '<br><strong>Track:</strong>' + location.path
 
-            animation: google.maps.Animation.DROP
-
           cid += 1
 
-        mc = new MarkerClusterer(map.map, map.markers)
+        mc = new MarkerClusterer(map.map, map.markers) if first_time
+
 
         first_time = false
 
-    setTimeout(reqLocations, 1000 * 10)
+    setTimeout(reqLocations, 1000 * 5)
 
   reqLocations()
