@@ -1,6 +1,9 @@
 Soundmap::Application.routes.draw do
   resources :sounds
   resources :map_view
+  #resources :static_pages
+
+  match '/signup', to: 'static_pages#index'
 
   match '/user/sounds', :controller => 'sounds', :action => 'uploadFile'
   # The priority is based upon order of creation:
