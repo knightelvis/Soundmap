@@ -19,7 +19,6 @@ ActiveRecord::Schema.define(:version => 20121026183649) do
     t.string   "location"
     t.string   "path"
     t.string   "username"
-    t.datetime "date"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
   end

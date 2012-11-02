@@ -80,11 +80,4 @@ class SoundsController < ApplicationController
     end
   end
 
-  def uploadFile()
-    Rails.logger.error 'Display path in uploadFile!!'
-    Rails.logger.error params[:upload]
-
-    post = Sound.uploadfile(params[:upload])
-    render :text => "File has been uploaded successfully"
-  end
 end
