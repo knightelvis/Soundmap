@@ -7,7 +7,6 @@ class CreateSounds < ActiveRecord::Migration
       t.string :location
       t.string :path
       t.string :username
-      t.datetime :date
 
       t.timestamps
     end

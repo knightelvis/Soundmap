@@ -15,5 +15,7 @@
 /tmp
 
 # Ignore IDE files
-.idea/soundmap.iml
-.idea/workspace.xml
+.idea/
+
+# Ignore sound files
+/public/sounds/*.*
