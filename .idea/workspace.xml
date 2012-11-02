@@ -2,20 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2cb7adbd-dd9e-4c29-a8d2-dc09a1b1421d" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/soundmap/public/sounds/1148499.mp3" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/soundmap/app/views/sounds/uploader.html.erb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/soundmap/.idea/workspace.xml" afterPath="$PROJECT_DIR$/soundmap/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/soundmap/app/assets/javascripts/map_view.js.coffee" afterPath="$PROJECT_DIR$/soundmap/app/assets/javascripts/map_view.js.coffee" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/soundmap/app/assets/stylesheets/map_view.css.scss" afterPath="$PROJECT_DIR$/soundmap/app/assets/stylesheets/map_view.css.scss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/soundmap/app/assets/stylesheets/scaffolds.css.scss" afterPath="$PROJECT_DIR$/soundmap/app/assets/stylesheets/scaffolds.css.scss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/soundmap/app/controllers/sounds_controller.rb" afterPath="$PROJECT_DIR$/soundmap/app/controllers/sounds_controller.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/soundmap/app/models/sound.rb" afterPath="$PROJECT_DIR$/soundmap/app/models/sound.rb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/soundmap/app/views/map_view/index.html.erb" afterPath="$PROJECT_DIR$/soundmap/app/views/map_view/index.html.erb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/soundmap/app/views/sounds/_form.html.erb" afterPath="$PROJECT_DIR$/soundmap/app/views/sounds/_form.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/soundmap/app/views/sounds/index.html.erb" afterPath="$PROJECT_DIR$/soundmap/app/views/sounds/index.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/soundmap/app/views/sounds/new.html.erb" afterPath="$PROJECT_DIR$/soundmap/app/views/sounds/new.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/soundmap/config/routes.rb" afterPath="$PROJECT_DIR$/soundmap/config/routes.rb" />
     </list>
     <ignored path="Soundmap.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -34,28 +24,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="application.css" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/soundmap/app/assets/stylesheets/application.css">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="custom.css.scss" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/soundmap/app/assets/stylesheets/custom.css.scss">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="5" column="1" selection-start="73" selection-end="73" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="map_view.css.scss" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="map_view.css.scss" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/soundmap/app/assets/stylesheets/map_view.css.scss">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="28" column="9" selection-start="427" selection-end="427" vertical-scroll-proportion="0.0">
+            <state line="31" column="1" selection-start="442" selection-end="442" vertical-scroll-proportion="0.7567084">
               <folding />
             </state>
           </provider>
@@ -73,25 +45,34 @@
       <file leaf-file-name="new.html.erb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/soundmap/app/views/sounds/new.html.erb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="4" column="25" selection-start="65" selection-end="65" vertical-scroll-proportion="-2.6153846">
+            <state line="8" column="6" selection-start="132" selection-end="132" vertical-scroll-proportion="-5.230769">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="uploader.html.erb" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/soundmap/app/views/sounds/uploader.html.erb">
+      <file leaf-file-name="application.html.erb" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/soundmap/app/views/layouts/application.html.erb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.0">
+            <state line="7" column="87" selection-start="330" selection-end="330" vertical-scroll-proportion="13.076923">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="map_view.js.coffee" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="map_view.js.coffee" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/soundmap/app/assets/javascripts/map_view.js.coffee">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="8" column="41" selection-start="381" selection-end="381" vertical-scroll-proportion="-1.0860806">
+            <state line="58" column="76" selection-start="1546" selection-end="1546" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.html.erb" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/soundmap/app/views/sounds/index.html.erb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.0">
               <folding />
             </state>
           </provider>
@@ -100,7 +81,7 @@
       <file leaf-file-name="index.html.erb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/soundmap/app/views/map_view/index.html.erb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="13" column="47" selection-start="328" selection-end="328" vertical-scroll-proportion="-8.5">
+            <state line="11" column="29" selection-start="240" selection-end="240" vertical-scroll-proportion="-4.8076925">
               <folding />
             </state>
           </provider>
@@ -109,7 +90,7 @@
       <file leaf-file-name="_form.html.erb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/soundmap/app/views/sounds/_form.html.erb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="28" column="10" selection-start="878" selection-end="878" vertical-scroll-proportion="-10.038462">
+            <state line="23" column="48" selection-start="779" selection-end="779" vertical-scroll-proportion="-9.153846">
               <folding />
             </state>
           </provider>
@@ -118,7 +99,16 @@
       <file leaf-file-name="sounds_controller.rb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/soundmap/app/controllers/sounds_controller.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="50" column="9" selection-start="1132" selection-end="1132" vertical-scroll-proportion="0.0">
+            <state line="46" column="98" selection-start="961" selection-end="961" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="custom.css.scss" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/soundmap/app/assets/stylesheets/custom.css.scss">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="5" column="1" selection-start="73" selection-end="73" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -144,14 +134,14 @@
         <option value="$PROJECT_DIR$/soundmap/Gemfile" />
         <option value="$PROJECT_DIR$/soundmap/app/assets/stylesheets/custom.css.scss" />
         <option value="$PROJECT_DIR$/soundmap/app/assets/javascripts/application.js" />
+        <option value="$PROJECT_DIR$/soundmap/app/assets/stylesheets/scaffolds.css.scss" />
+        <option value="$PROJECT_DIR$/soundmap/app/controllers/sounds_controller.rb" />
+        <option value="$PROJECT_DIR$/soundmap/app/assets/javascripts/map_view.js.coffee" />
+        <option value="$PROJECT_DIR$/soundmap/app/views/sounds/_form.html.erb" />
         <option value="$PROJECT_DIR$/soundmap/app/views/layouts/application.html.erb" />
         <option value="$PROJECT_DIR$/soundmap/app/views/sounds/new.html.erb" />
-        <option value="$PROJECT_DIR$/soundmap/app/assets/stylesheets/scaffolds.css.scss" />
         <option value="$PROJECT_DIR$/soundmap/app/views/map_view/index.html.erb" />
         <option value="$PROJECT_DIR$/soundmap/app/assets/stylesheets/map_view.css.scss" />
-        <option value="$PROJECT_DIR$/soundmap/app/views/sounds/_form.html.erb" />
-        <option value="$PROJECT_DIR$/soundmap/app/assets/javascripts/map_view.js.coffee" />
-        <option value="$PROJECT_DIR$/soundmap/app/controllers/sounds_controller.rb" />
       </list>
     </option>
   </component>
@@ -187,7 +177,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -483,6 +472,10 @@
               <option name="myItemId" value="assets" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="javascripts" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -505,13 +498,10 @@
               <option name="myItemId" value="assets" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="javascripts" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -599,7 +589,7 @@
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2189394" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.22272727" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
@@ -667,11 +657,6 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/soundmap/app/assets/stylesheets/sounds.css.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/soundmap/app/assets/javascripts/application.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="12" column="2" selection-start="582" selection-end="582" vertical-scroll-proportion="0.0" />
@@ -687,19 +672,19 @@
         <state line="3" column="4" selection-start="61" selection-end="61" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/soundmap/app/views/layouts/application.html.erb">
+    <entry file="file://$PROJECT_DIR$/soundmap/db/seeds.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="23" selection-start="490" selection-end="490" vertical-scroll-proportion="-5.8846154" />
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/soundmap/db/seeds.rb">
+    <entry file="file://$PROJECT_DIR$/soundmap/app/views/sounds/uploader.html.erb">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/soundmap/app/assets/stylesheets/scaffolds.css.scss">
+    <entry file="file://$PROJECT_DIR$/soundmap/app/assets/stylesheets/application.css">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
           <folding />
@@ -713,28 +698,42 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/soundmap/app/assets/stylesheets/map_view.css.scss">
+    <entry file="file://$PROJECT_DIR$/soundmap/app/controllers/sounds_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="28" column="9" selection-start="427" selection-end="427" vertical-scroll-proportion="0.0">
+        <state line="46" column="98" selection-start="961" selection-end="961" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/soundmap/app/assets/stylesheets/application.css">
+    <entry file="file://$PROJECT_DIR$/soundmap/app/assets/javascripts/map_view.js.coffee">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+        <state line="58" column="76" selection-start="1546" selection-end="1546" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/soundmap/app/views/sounds/_form.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="23" column="48" selection-start="779" selection-end="779" vertical-scroll-proportion="-9.153846">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/soundmap/app/views/layouts/application.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="7" column="87" selection-start="330" selection-end="330" vertical-scroll-proportion="13.076923">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/soundmap/app/views/sounds/new.html.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="25" selection-start="65" selection-end="65" vertical-scroll-proportion="-2.6153846">
+        <state line="8" column="6" selection-start="132" selection-end="132" vertical-scroll-proportion="-5.230769">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/soundmap/app/views/sounds/uploader.html.erb">
+    <entry file="file://$PROJECT_DIR$/soundmap/app/assets/stylesheets/scaffolds.css.scss">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
           <folding />
@@ -743,28 +742,21 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/soundmap/app/views/map_view/index.html.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="47" selection-start="328" selection-end="328" vertical-scroll-proportion="-8.5">
+        <state line="11" column="29" selection-start="240" selection-end="240" vertical-scroll-proportion="-4.8076925">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/soundmap/app/views/sounds/_form.html.erb">
+    <entry file="file://$PROJECT_DIR$/soundmap/app/views/sounds/index.html.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="28" column="10" selection-start="878" selection-end="878" vertical-scroll-proportion="-10.038462">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/soundmap/app/controllers/sounds_controller.rb">
+    <entry file="file://$PROJECT_DIR$/soundmap/app/assets/stylesheets/map_view.css.scss">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="50" column="9" selection-start="1132" selection-end="1132" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/soundmap/app/assets/javascripts/map_view.js.coffee">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="41" selection-start="381" selection-end="381" vertical-scroll-proportion="-1.0860806">
+        <state line="31" column="1" selection-start="442" selection-end="442" vertical-scroll-proportion="0.7567084">
           <folding />
         </state>
       </provider>
