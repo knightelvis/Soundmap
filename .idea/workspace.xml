@@ -1,16 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="2cb7adbd-dd9e-4c29-a8d2-dc09a1b1421d" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/soundmap/app/views/static_pages/index.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/Soundmap.iml" afterPath="$PROJECT_DIR$/.idea/Soundmap.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/soundmap/Gemfile.lock" afterPath="$PROJECT_DIR$/soundmap/Gemfile.lock" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/soundmap/Gemfile" afterPath="$PROJECT_DIR$/soundmap/Gemfile" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/soundmap/app/assets/javascripts/application.js" afterPath="$PROJECT_DIR$/soundmap/app/assets/javascripts/application.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/soundmap/app/assets/stylesheets/custom.css.scss" afterPath="$PROJECT_DIR$/soundmap/app/assets/stylesheets/custom.css.scss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/soundmap/config/routes.rb" afterPath="$PROJECT_DIR$/soundmap/config/routes.rb" />
-    </list>
+    <list default="true" id="2cb7adbd-dd9e-4c29-a8d2-dc09a1b1421d" name="Default" comment="" />
     <ignored path="Soundmap.iws" />
     <ignored path=".idea/workspace.xml" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -112,7 +103,7 @@
       <file leaf-file-name="routes.rb" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/soundmap/config/routes.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="5" column="46" selection-start="150" selection-end="150" vertical-scroll-proportion="0.12048193">
+            <state line="17" column="81" selection-start="633" selection-end="633" vertical-scroll-proportion="0.40963855">
               <folding />
             </state>
           </provider>
@@ -800,7 +791,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/soundmap/config/routes.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="46" selection-start="150" selection-end="150" vertical-scroll-proportion="0.12048193">
+        <state line="17" column="81" selection-start="633" selection-end="633" vertical-scroll-proportion="0.40963855">
           <folding />
         </state>
       </provider>
