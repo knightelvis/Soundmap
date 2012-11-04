@@ -1,4 +1,6 @@
 Soundmap::Application.routes.draw do
+  devise_for :users
+
   resources :sounds
   resources :map_view
   #resources :static_pages
