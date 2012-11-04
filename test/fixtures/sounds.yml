@@ -1,0 +1,27 @@
+# == Schema Information
+#
+# Table name: sounds
+#
+#  id          :integer          not null, primary key
+#  title       :string(255)
+#  description :text
+#  location    :string(255)
+#  path        :string(255)
+#  username    :string(255)
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  title: MyString
+  description: MyText
+  location: MyString
+  file_path: MyString
+
+two:
+  title: MyString
+  description: MyText
+  location: MyString
+  file_path: MyString
