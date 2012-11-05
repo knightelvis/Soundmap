@@ -14,3 +14,30 @@
 //= require jquery_ujs
 //= require twitter/bootstrap
 //= require_tree .
+
+var play = function(id) {
+    var audio = document.getElementById('player');
+    audio.pause();
+
+    $.ajax({
+        url: '/sounds/' + id + '.json',
+        dataType: 'json',
+        success: function (data) {
+            audio.src = data.path.url;
+            $('#p-title').html(data.title);
+            $('#p-location').html(data.location);
+            audio.play();
+        }
+    });
+
+}
+
+var setLocation = function(id) {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(function(pos) {
+            $('#' + id).attr({ 'value': pos.coords.longitude + ", " + pos.coords.latitude });
+        });
+    } else {
+        alert("not supported");
+    }
+}

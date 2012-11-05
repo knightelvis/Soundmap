@@ -2,6 +2,8 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
 
+
+
 getNewLocations = (previousList, currentList) ->
   if previousList.length == currentList.length
     []
@@ -13,6 +15,7 @@ $(document).ready ->
 
   first_time = true
   location_list = []
+  mc = null
 
   map = new GMaps
     zoom: 5
@@ -28,9 +31,9 @@ $(document).ready ->
         #alert data
 
         new_locations = []
-        console.log new_locations.length
-        console.log location_list.length
-        console.log data.length
+#        console.log new_locations.length
+#        console.log location_list.length
+#        console.log data.length
 
         if first_time
           new_locations = data
@@ -47,9 +50,8 @@ $(document).ready ->
         cid = 0
         for location in new_locations
 
-          location_lng = location.location.split(',')[0]
-          location_lat = location.location.split(',')[1]
-
+          location_lng = parseFloat(location.location.split(',')[0])
+          location_lat = parseFloat(location.location.split(',')[1])
 
           map.addMarker
             lat: location_lat
@@ -62,14 +64,18 @@ $(document).ready ->
             infoWindow:
               content: '<strong>Coords:</strong> ' + location_lng + ', ' + location_lat \
               + '<br>Uploaded in <strong>' + location.title + '</strong>' \
-              + '<br><button onclick="play(\'' + location.path.url + '\')" class="btn btn-small btn-primary" id="play' + cid + '"><i class="icon-play icon-white"></i> Play</button>' \
+              + '<br><button onclick="play(\'' + location.id + '\')" class="btn btn-mini btn-primary" id="play' + cid + '"><i class="icon-heart"></i> Play</button>' \
               + '<br><strong>Track:</strong>' + location.path.url
 
             animation: google.maps.Animation.DROP
 
           cid += 1
 
-        mc = new MarkerClusterer(map.map, map.markers)
+        if first_time
+          mc = new MarkerClusterer(map.map, map.markers)
+        else
+          if new_locations.length > 0
+            mc.repaint()
 
         first_time = false
 
