@@ -1,9 +1,7 @@
+<!-- This page remains for test only -->
 <h1>Listing sounds</h1>
 
-
-
 <% @sounds.each do |sound| %>
-    <div style="background-color: #b0c4de;">
     <p><b>Title:</b>  <%= sound.title %></p>
     <p><b>Description:</b>  <%= sound.description %></p>
     <p><b>Location:</b> <%= sound.location %></p>
@@ -16,4 +14,3 @@
 
 <br><br>
 <%= link_to 'New Sound', new_sound_path %>
-<%#= render 'form' %>  <!---- XXL tmp --->

@@ -9,7 +9,11 @@ gem "twitter-bootstrap-rails"
 
 gem 'annotate', ">=2.5.0"
 
+# gem for authentication
 gem 'devise'
+
+# gem for file uploading
+gem 'carrierwave'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'

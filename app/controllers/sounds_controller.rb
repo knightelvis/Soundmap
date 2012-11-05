@@ -1,11 +1,13 @@
 class SoundsController < ApplicationController
+
+  before_filter :authenticate_user!, except: [:index, :show]
+
   # GET /sounds
   # GET /sounds.json
   def index
     @sounds = Sound.all
 
     respond_to do |format|
-      format.html # index.html.erb
       format.json { render json: @sounds }
     end
   end
