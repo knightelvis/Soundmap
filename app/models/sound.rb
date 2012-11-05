@@ -17,6 +17,10 @@ class Sound < ActiveRecord::Base
 
   belongs_to :user
 
+  validates :user_id, :presence => true
+  validates :title, :presence => true
+  validates :location, :presence => true, :format => { :with => /[+\-]?\d+(.\d+)?,[+\-]?\d+(.\d+)?/ }
+
   mount_uploader :path, SoundUploader
 
   #attr_accessible :upload_file

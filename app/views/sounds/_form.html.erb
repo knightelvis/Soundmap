@@ -1,7 +1,7 @@
 <%= form_for(@sound, :multipart => true, :class => 'form-horizontal') do |f| %>
     <% if @sound.errors.any? %>
-        <div id="error_explanation">
-          <h2><%= pluralize(@sound.errors.count, "error") %> prohibited this sound from being saved:</h2>
+        <div id="error_explanation" class="alert alert-error alert-block">
+          <h5><%= pluralize(@sound.errors.count, "error") %> prohibited this sound from being saved:</h5>
           <ul>
             <% @sound.errors.full_messages.each do |msg| %>
                 <li><%= msg %></li>
@@ -11,8 +11,7 @@
     <% end %>
 
     <div class="field">
-      <%= f.label :user_id %>
-      <%= f.text_field :user_id %>
+      <%= f.hidden_field :user_id, :value => current_user.id %>
     </div>
     <div class="field">
       <%= f.label :title %>

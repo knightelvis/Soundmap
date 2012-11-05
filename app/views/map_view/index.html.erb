@@ -23,6 +23,16 @@
           </dl>
         </div>
 
+        <% if user_signed_in? %>
+        <table class="table">
+          <% @sounds.each do |sound| %>
+          <tr>
+            <td class="span3"><%= sound.title %></td>
+            <td class="span1"><button class="btn btn-primary btn-mini">Play</button></td></tr>
+          <% end %>
+        </table>
+        <% end %>
+
       </div>
 
       <div class="player-wrapper">
@@ -38,10 +48,10 @@
 </div>
 
 <script type="text/javascript">
-    var play = function(id) {
+    var play = function(path) {
         audio = document.getElementById('player');
         audio.pause();
-        audio.src = id;
+        audio.src = path;
         audio.play();
     }
 </script>

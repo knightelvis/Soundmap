@@ -62,8 +62,8 @@ $(document).ready ->
             infoWindow:
               content: '<strong>Coords:</strong> ' + location_lng + ', ' + location_lat \
               + '<br>Uploaded in <strong>' + location.title + '</strong>' \
-              + '<br><button onclick="play(\'' + location.path + '\')" class="btn btn-small btn-primary" id="play' + cid + '"><i class="icon-play icon-white"></i> Play</button>' \
-              + '<br><strong>Track:</strong>' + location.path
+              + '<br><button onclick="play(\'' + location.path.url + '\')" class="btn btn-small btn-primary" id="play' + cid + '"><i class="icon-play icon-white"></i> Play</button>' \
+              + '<br><strong>Track:</strong>' + location.path.url
 
             animation: google.maps.Animation.DROP
 
