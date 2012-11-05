@@ -2,7 +2,6 @@
     <% if @sound.errors.any? %>
         <div id="error_explanation">
           <h2><%= pluralize(@sound.errors.count, "error") %> prohibited this sound from being saved:</h2>
-
           <ul>
             <% @sound.errors.full_messages.each do |msg| %>
                 <li><%= msg %></li>
@@ -11,6 +10,10 @@
         </div>
     <% end %>
 
+    <div class="field">
+      <%= f.label :user_id %>
+      <%= f.text_field :user_id %>
+    </div>
     <div class="field">
       <%= f.label :title %>
       <%= f.text_field :title %>
