@@ -35,7 +35,7 @@ var play = function(id) {
 var setLocation = function(id) {
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(function(pos) {
-            $('#' + id).attr({ 'value': pos.coords.longitude + ", " + pos.coords.latitude });
+            $('#' + id).attr({ 'value': pos.coords.longitude + "," + pos.coords.latitude });
         });
     } else {
         alert("not supported");
