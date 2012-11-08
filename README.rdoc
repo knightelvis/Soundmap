@@ -1,0 +1,5 @@
+== About This Project
+
+This is an on-going course project for CS 290B of University of California, Santa Barbara.
+
+For detailed information about this course, please check the course site: http://cs290.com.

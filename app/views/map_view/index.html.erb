@@ -1,0 +1,41 @@
+<div class="container">
+  <div class="row-fluid">
+    <div class="span9">
+      <div class="map-wrapper">
+        <div id="map"></div>
+      </div>
+    </div>
+    <div class="span3">
+
+      <div id="info-box" class="well">
+        <h4 id="info-title">Now Playing</h4>
+        <dl>
+          <dt>Title</dt>
+          <dd>Ray</dd>
+          <dt>Geo Location</dt>
+          <dd>Lat, Lng</dd>
+        </dl>
+
+        <% if user_signed_in? %>
+        <table class="table">
+          <% @sounds.each do |sound| %>
+          <tr>
+            <td class="span2"><%= sound.title %></td>
+            <td class="span1"><button class="btn btn-primary btn-mini" onclick="play('<%= sound.id %>')">Play</button></td></tr>
+          <% end %>
+        </table>
+        <% end %>
+
+      </div>
+
+      <div class="player-wrapper">
+        <audio id="player" src="sounds/1.mp3" controls preload="auto" autobuffer></audio>
+      </div>
+
+      <div id="control-box">
+        <%= link_to 'Create Your Own!', new_sound_path, {'class' => 'btn btn-success btn-block'} %>
+      </div>
+    </div>
+
+  </div>
+</div>

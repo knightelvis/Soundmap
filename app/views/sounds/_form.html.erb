@@ -1,0 +1,42 @@
+<%= form_for(@sound, :multipart => true, :class => 'form-horizontal') do |f| %>
+    <% if @sound.errors.any? %>
+        <div id="error_explanation" class="alert alert-error alert-block">
+          <h5><%= pluralize(@sound.errors.count, "error") %> prohibited this sound from being saved:</h5>
+          <ul>
+            <% @sound.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+
+    <div class="field">
+      <%= f.hidden_field :user_id, :value => current_user.id %>
+    </div>
+    <div class="field">
+      <%= f.label :title %>
+      <%= f.text_field :title %>
+    </div>
+    <div class="field">
+      <%= f.label :description %>
+      <%= f.text_area :description, :rows => 5, :class => 'input-xlarge' %>
+    </div>
+    <div class="field">
+      <%= f.label :location %>
+      <%= f.text_field :location %>
+    </div>
+    <div class="field">
+      <%= f.label :path %>
+      <%= f.file_field :path %>
+    </div>
+    <div class="actions">
+      <%#= f.submit %>
+      <%= submit_tag "Do it!", :class => 'btn btn-primary'%>
+    </div>
+
+<% end %>
+
+<script type="text/javascript">
+    setLocation('coords');
+</script>
+  
