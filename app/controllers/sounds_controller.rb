@@ -82,4 +82,7 @@ class SoundsController < ApplicationController
     end
   end
 
+  def xxl_test
+    flash[:warning] =  "I am here!!!"
+  end
 end

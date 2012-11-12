@@ -13,7 +13,7 @@
 #
 
 class Sound < ActiveRecord::Base
-  attr_accessible :id, :description, :path, :location, :title, :user_id
+  attr_accessible :id, :description, :path, :location, :title, :user_id ,:tags
 
   belongs_to :user
 

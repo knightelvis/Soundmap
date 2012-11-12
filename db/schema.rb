@@ -11,16 +11,30 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121105012009) do
+ActiveRecord::Schema.define(:version => 20121110070933) do
+
+  create_table "r_tag_sounds", :force => true do |t|
+    t.integer  "tag_id"
+    t.integer  "sound_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "sounds", :force => true do |t|
     t.string   "title"
     t.text     "description"
     t.string   "location"
     t.string   "path"
+    t.string   "tags"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
     t.integer  "user_id"
+  end
+
+  create_table "tags", :force => true do |t|
+    t.string   "titile"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "users", :force => true do |t|
