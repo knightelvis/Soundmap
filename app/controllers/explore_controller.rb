@@ -1,4 +1,5 @@
-class MapViewController < ApplicationController
+class ExploreController < ApplicationController
+
 
   def index
 
@@ -7,5 +8,6 @@ class MapViewController < ApplicationController
     end
 
   end
+
 
 end

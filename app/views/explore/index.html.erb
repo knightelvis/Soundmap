@@ -1,0 +1,59 @@
+<% content_for :scripts do %>
+<%= javascript_include_tag :explore %>
+<% end %>
+
+<div class="container">
+
+  <div id="map-box-expandable">
+    <div class="map-wrapper">
+      <div id="map-explore"></div>
+    </div>
+
+    <div id="map-overlay-topleft">
+      <div id="info-box-title">Guess You May Like ...</div>
+      <div id="info-box-long">
+        <div class="info-box-entry">
+          <h5 class="info-entry-title" id="p-title">My Voice in Santa Barbara!</h5>
+          <p>This is my ultimate test.</p>
+          <div class="info-entry-author">By <a href="#">Juno</a> at <a href="#">Santa Barbara</a></div>
+          <div class="info-entry-labels">
+            <a href="#"><span class="label label-info">Chinese</span></a>
+            <span class="label label-info">life</span>
+            <span class="label label-info">mood</span>
+          </div>
+        </div>
+        <div class="info-box-entry">
+          <h5 class="info-entry-title" id="p-title">My Voice in Santa Barbara!</h5>
+          <p>This is my ultimate test.</p>
+          <div class="info-entry-author">By <a href="#">Juno</a> at <a href="#">Santa Barbara</a></div>
+          <div class="info-entry-labels">
+            <a href="#"><span class="label label-info">Chinese</span></a>
+            <span class="label label-info">life</span>
+            <span class="label label-info">mood</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="map-overlay-topright">
+      <div id="info-box-title">Now Playing</div>
+      <div id="info-box">
+        <div id="info-list">
+          <h5 class="info-entry-title" id="p-title">My Voice in Santa Barbara!</h5>
+          <p>This is my ultimate test.</p>
+          <div class="info-entry-author">By <a href="#">Juno</a> at <a href="#">Santa Barbara</a></div>
+          <div class="info-entry-labels">
+            <a href="#"><span class="label label-info">Chinese</span></a>
+            <span class="label label-info">life</span>
+            <span class="label label-info">mood</span>
+          </div>
+        </div>
+        <div class="player-wrapper">
+          <audio id="player" src="sounds/1.mp3" controls preload="auto" autobuffer></audio>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  </div>
+</div>

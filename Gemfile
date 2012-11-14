@@ -7,6 +7,10 @@ gem "therubyracer"
 gem "less-rails"
 gem "twitter-bootstrap-rails"
 
+gem "mysql2"
+
+gem 'geocoder'
+
 gem 'annotate', ">=2.5.0"
 
 # gem for authentication

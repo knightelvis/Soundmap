@@ -10,7 +10,6 @@ getNewLocations = (previousList, currentList) ->
   else
     currentList.slice previousList.length, currentList.length
 
-
 $(document).ready ->
 
   first_time = true
@@ -19,7 +18,7 @@ $(document).ready ->
 
   map = new GMaps
     zoom: 5
-    div: '#map'
+    div: '#map-explore'
     lng: 116.4
     lat: 39.93
 

@@ -1,5 +1,7 @@
 module SoundsHelper
-  def page_title
-    @page_title || "!!!!!!PAGE TITLE!!!!!"
+
+  def most_recent_sound(user_id)
+    User.find(user_id).sound[0]
   end
+
 end

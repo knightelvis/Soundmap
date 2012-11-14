@@ -3,11 +3,16 @@ Soundmap::Application.routes.draw do
 
   resources :sounds
   resources :map_view
+  resources :user
+  resources :explore
+
+  match "/user/recent/:id" => "user#recent"
+
   #resources :static_pages
 
-  match '/signup', to: 'static_pages#index'
+  #match '/signup', to: 'static_pages#index'
 
-  match '/user/sounds', :controller => 'sounds', :action => 'uploadFile'
+  #match '/user/sounds', :controller => 'sounds', :action => 'uploadFile'
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
