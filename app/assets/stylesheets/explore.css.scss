@@ -50,6 +50,17 @@
   box-shadow: 0 0 10px #999;
 }
 
+#loading-bar {
+  position: absolute;
+  left: 320px;
+  top: 10px;
+  color: #CCC;
+  background-color: #000;
+  padding: 5px 10px;
+  border-radius: 4px;
+  display: none;
+}
+
 .info-box-title {
   background-color: #575757;
   color: #FFF;

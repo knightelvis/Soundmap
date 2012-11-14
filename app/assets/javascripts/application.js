@@ -25,6 +25,7 @@ var play = function(id) {
         success: function (data) {
             audio.src = data.path.url;
             $('#p-title').html(data.title);
+            $('#p-description').html(data.description);
             $('#p-location').html(data.location);
             audio.play();
         }

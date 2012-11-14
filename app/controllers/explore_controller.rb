@@ -34,6 +34,8 @@ class ExploreController < ApplicationController
       if dist <= @distance
         @locations << {
             'sound' => sound,
+            'user_id' => sound.user.id,
+            'username' => sound.user.email,
             'data' => Geocoder.search(sound.location.split(',')[1] + ',' + sound.location.split(',')[0])[0].formatted_address,
             'distance' => dist
         }
