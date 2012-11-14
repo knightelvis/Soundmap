@@ -14,7 +14,7 @@ $(document).ready ->
   GMaps.geolocate
     success: (position) ->
       map.setCenter position.coords.latitude, position.coords.longitude
-      map.setZoom 13
+      map.setZoom 12
       getNearybySounds("#{position.coords.latitude},#{position.coords.longitude}", 5)
 
   $('#location-search-commit').click ->
