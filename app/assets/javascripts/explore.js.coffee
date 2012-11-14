@@ -17,20 +17,60 @@ $(document).ready ->
   mc = null
 
   map = new GMaps
-    zoom: 5
+    zoom: 9
     div: '#map-explore'
     lng: 116.4
     lat: 39.93
+    scrollwheel: false
 
   GMaps.geolocate
     success: (position) ->
       map.setCenter position.coords.latitude, position.coords.longitude
-      map.setZoom 12
+      map.setZoom 13
 
       # map.addMarker
       #   lat: position.coords.latitude
       #   lng: position.coords.longitude
       #   animation: google.maps.Animation.DROP
+
+  $('#location-search-commit').click ->
+
+    location_content = $('#location-search-content').val()
+
+    if location_content.length == 0
+      alert 'Enter something please :-)'
+      return false
+
+    $.ajax
+      url: '/nearby.json'
+      dataType: 'json'
+      type: 'POST'
+      data: "location=#{location_content}&distance=#{5}"
+      beforeSend: ->
+        $('#location-search-commit').button('loading')
+
+      success: (data) ->
+        console.log data
+        $('#location-search-commit').button('reset')
+
+        current_location = new google.maps.LatLng data.current.data.geometry.location.lat, data.current.data.geometry.location.lng
+
+        map.map.panTo current_location
+        map.removeMarkers()
+
+        for location in data.data
+          location_lat = parseFloat(location.sound.location.split(',')[1])
+          location_lng = parseFloat(location.sound.location.split(',')[0])
+
+          map.addMarker
+            lat: location_lat
+            lng: location_lng
+
+            animation: google.maps.Animation.DROP
+
+        #map.fitZoom()
+
+    return false
 
   reqLocations = ->
     $.ajax
@@ -90,4 +130,4 @@ $(document).ready ->
 
     setTimeout(reqLocations, 1000 * 10)
 
-  reqLocations()
+  #reqLocations()

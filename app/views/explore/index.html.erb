@@ -10,10 +10,18 @@
     </div>
 
     <div id="map-overlay-topleft">
-      <div id="info-box-title">Guess You May Like ...</div>
-      <div id="info-box-long">
+      <div class="info-box-title">Guess You May Like ...</div>
+      <div class="info-box-long">
+        <div class="location-search-box">
+          <form class="form-search">
+            <div class="input-append">
+              <input type="text" class="span2 search-query" id="location-search-content" placeholder="Get voices from?">
+              <button type="submit" class="btn btn-primary" id="location-search-commit" data-loading-text="Loading...">Search</button>
+            </div>
+          </form>
+        </div>
         <div class="info-box-entry">
-          <h5 class="info-entry-title" id="p-title">My Voice in Santa Barbara!</h5>
+          <h5 class="info-entry-title" id="p1-title">My Voice in Santa Barbara!</h5>
           <p>This is my ultimate test.</p>
           <div class="info-entry-author">By <a href="#">Juno</a> at <a href="#">Santa Barbara</a></div>
           <div class="info-entry-labels">
@@ -23,7 +31,7 @@
           </div>
         </div>
         <div class="info-box-entry">
-          <h5 class="info-entry-title" id="p-title">My Voice in Santa Barbara!</h5>
+          <h5 class="info-entry-title" id="p2-title">My Voice in Santa Barbara!</h5>
           <p>This is my ultimate test.</p>
           <div class="info-entry-author">By <a href="#">Juno</a> at <a href="#">Santa Barbara</a></div>
           <div class="info-entry-labels">
@@ -36,9 +44,9 @@
     </div>
 
     <div id="map-overlay-topright">
-      <div id="info-box-title">Now Playing</div>
-      <div id="info-box">
-        <div id="info-list">
+      <div class="info-box-title">Now Playing</div>
+      <div class="info-box">
+        <div class="info-list">
           <h5 class="info-entry-title" id="p-title">My Voice in Santa Barbara!</h5>
           <p>This is my ultimate test.</p>
           <div class="info-entry-author">By <a href="#">Juno</a> at <a href="#">Santa Barbara</a></div>

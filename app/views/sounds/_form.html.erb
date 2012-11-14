@@ -22,6 +22,14 @@
       <%= f.text_area :description, :rows => 5, :class => 'input-xlarge' %>
     </div>
     <div class="field">
+      <%= f.label :latitude %>
+      <%= f.text_field :latitude, :id => 'latitude-box' %>
+    </div>
+    <div class="field">
+      <%= f.label :longitude %>
+      <%= f.text_field :longitude, :id => 'longitude-box' %>
+    </div>
+    <div class="field">
       <%= f.label :location %>
       <%= f.text_field :location, :id => 'coords'  %>
     </div>
