@@ -18,6 +18,7 @@ gem 'devise'
 
 # gem for file uploading
 gem 'carrierwave'
+gem 'fog'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
