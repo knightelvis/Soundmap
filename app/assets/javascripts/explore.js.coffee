@@ -63,15 +63,26 @@ $(document).ready ->
             lng: location_lng
 
             click:
-              ((id) ->
+              ((item) ->
                 () ->
-                  play(id))(location.sound.id)
+                  play(item))(location)
 
             animation: google.maps.Animation.DROP
 
         $('#info-box-list').hide ->
           $('#info-box-list').html(html)
           $('#info-box-list').fadeIn()
+
+  play = (item) ->
+    audio = document.getElementById 'player'
+    audio.pause()
+
+    audio.src = item.sound.path.url
+    $('#p-title').html item.sound.title
+    $('#p-description').html item.sound.description
+    $('#p-location').html item.sound.location
+    $('#p-author').html item.username
+    audio.play()
 
   generateList = (item) ->
     html = """

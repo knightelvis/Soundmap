@@ -1,9 +1,29 @@
+<% content_for :scripts do %>
+    <%= javascript_include_tag :sounds %>
+<% end %>
+
 <div class="container">
 
-<h3>New Sound</h3>
+  <h3>New Sound</h3>
 
-<%= render 'form' %>
+  <div class="row-fluid">
+    <div class="span5">
+      <%= render 'form' %>
+    </div>
 
-<p><%= link_to '← Back', :controller => 'map_view' %></p>
+    <div class="span7">
+      <div class="location-search-box">
+        <form id="location-search" class="form-search">
+          <div class="input-append">
+            <input type="text" class="search-query" id="location-search-content" placeholder="Where are you?">
+            <button type="submit" class="btn btn-primary" id="location-search-commit" data-loading-text="Loading...">Search</button>
+          </div>
+        </form>
+      </div>
+      <div id="map-select" class="map-container"></div>
+    </div>
+  </div>
+
+  <p><%= link_to '← Back', :controller => 'map_view' %></p>
 
 </div>
