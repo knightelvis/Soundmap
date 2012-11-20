@@ -4,8 +4,8 @@
     });
     function passTags(){
         var tags = $('#myTags').tagit("assignedTags");
-        $('#sound_tags').val(tags);
-        alert($('#sound_tags').val());
+        $('#tmp_tags').val(tags);
+        //alert($('#tmp_tags').val());
     }
 </script>
 
@@ -26,19 +26,19 @@
     </div>
     <div class="field">
       <%= f.label :title %>
-      <%= f.text_field :title %>
+      <%= f.text_field :title, :value => "thistitle" %>
     </div>
     <div class="field">
       <%= f.label :description %>
-      <%= f.text_area :description, :rows => 5, :class => 'input-xlarge' %>
+      <%= f.text_area :description, :rows => 5, :class => 'input-xlarge' , :value => "desc"%>
     </div>
     <div class="field">
       <%= f.label :location %>
-      <%= f.text_field :location %>
+      <%= f.text_field :location , :value => "11,22"%>
     </div>
     <div class="field">
       <%= f.label :tags %>
-      <%= f.hidden_field :tags %>
+      <%= hidden_field_tag :tmp_tags %>
       <ul id="myTags"></ul>
     </div>
     <div class="field">

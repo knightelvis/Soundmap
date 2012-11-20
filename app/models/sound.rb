@@ -13,9 +13,11 @@
 #
 
 class Sound < ActiveRecord::Base
-  attr_accessible :id, :description, :path, :location, :title, :user_id ,:tags
+  attr_accessible :id, :description, :path, :location, :title, :user_id #,:tags
 
   belongs_to :user
+  has_many :r_tag_sounds, :foreign_key => "sound_id"
+  has_many :tags, :through => :r_tag_sounds
 
   validates :user_id, :presence => true
   validates :title, :presence => true

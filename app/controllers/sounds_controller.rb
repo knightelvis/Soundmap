@@ -27,6 +27,7 @@ class SoundsController < ApplicationController
   # GET /sounds/new.json
   def new
     @sound = Sound.new
+    @r_tag_sound = RTagSound.new
 
     respond_to do |format|
       format.html # new.html.erb
@@ -45,7 +46,7 @@ class SoundsController < ApplicationController
     @sound = Sound.new(params[:sound])
 
     respond_to do |format|
-      if @sound.save
+      if @sound.save and store_tags(params[:tmp_tags], @sound.id)
         format.html { redirect_to map_view_index_path, notice: 'Sound was successfully created.' }
       else
         format.html { render :action => "new" }
@@ -84,5 +85,27 @@ class SoundsController < ApplicationController
 
   def xxl_test
     flash[:warning] =  "I am here!!!"
+  end
+
+  def store_tags(str_tags, sound_id)
+    #split all tags
+    tags = str_tags.to_s.split(',')
+
+    #store info into "r_tag_sound"
+
+    #store info into "tags"
+    for t in tags
+      tag = Tag.new
+      tag.title = t
+      tag.save
+
+      r_tag_sound = RTagSound.new()
+      r_tag_sound.tag_id = tag.id
+      r_tag_sound.tag_title = tag.title
+      r_tag_sound.sound_id = sound_id
+      r_tag_sound.save
+    end
+
+    return true
   end
 end
