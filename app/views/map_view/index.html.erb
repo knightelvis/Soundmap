@@ -1,20 +1,56 @@
+<% content_for :scripts do %>
+<%= javascript_include_tag :map_view %>
+<% end %>
+
 <div class="container">
-  <div class="row-fluid">
-    <div class="span9">
-      <div class="map-wrapper">
-        <div id="map"></div>
+
+  <div id="map-box-expandable">
+    <div class="map-wrapper">
+      <div id="map"></div>
+    </div>
+
+    <div id="map-overlay">
+      <div id="info-box-title">Now Playing</div>
+      <div id="info-box">
+        <div id="info-list">
+          <h5 class="info-entry-title" id="p-title">My Voice in Santa Barbara!</h5>
+          <p>This is my ultimate test.</p>
+          <div class="info-entry-author">By <a href="#">Juno</a> at <a href="#">Santa Barbara</a></div>
+          <div class="info-entry-labels" id="p-tags">
+            <a href="#"><span class="label label-info">Chinese</span></a>
+            <span class="label label-info">life</span>
+            <span class="label label-info">mood</span>
+          </div>
+        </div>
+        <div class="player-wrapper">
+          <audio id="player" src="sounds/1.mp3" controls preload="auto" autobuffer></audio>
+        </div>
       </div>
     </div>
-    <div class="span3">
+  </div>
 
-      <div id="info-box" class="well">
-        <h4 id="info-title">Now Playing</h4>
-        <dl>
-          <dt>Title</dt>
-          <dd>Ray</dd>
-          <dt>Geo Location</dt>
-          <dd>Lat, Lng</dd>
-        </dl>
+  <div class="row-fluid" id="main-box">
+    <div class="span8" id="news-feed-box">
+
+    </div>
+
+    <div class="span4">
+      <div id="invite-form">
+        <h4>Invite a Friend</h4>
+        <%= form_tag('/invite', :method => 'post') do %>
+          <div class="input-append">
+            <%= text_field_tag('friend_email', nil, :placeholder => "Friend's email") %>
+            <%= submit_tag('Invite!', :class => 'btn btn-primary') %>
+          </div>
+        <% end %>
+      </div>
+
+      <div>
+
+        <p>Lorem</p>
+        <p>Lorem</p>
+        <p>Lorem</p>
+        <p>Lorem</p>
 
         <% if user_signed_in? %>
         <table class="table">
@@ -26,10 +62,6 @@
         </table>
         <% end %>
 
-      </div>
-
-      <div class="player-wrapper">
-        <audio id="player" src="sounds/1.mp3" controls preload="auto" autobuffer></audio>
       </div>
 
       <div id="control-box">

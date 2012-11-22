@@ -6,7 +6,6 @@ class MapViewController < ApplicationController
       @sounds = Sound.where("user_id = ?", current_user.id).order("updated_at DESC")
     end
 
-
   end
 
 end

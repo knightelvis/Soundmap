@@ -1,9 +1,9 @@
 <script>
     $(function(){
-        $('#myTags').tagit();
+        $('#ul_tags').tagit();
     });
     function passTags(){
-        var tags = $('#myTags').tagit("assignedTags");
+        var tags = $('#ul_tags').tagit("assignedTags");
         $('#tmp_tags').val(tags);
         //alert($('#tmp_tags').val());
     }
@@ -26,27 +26,34 @@
     </div>
     <div class="field">
       <%= f.label :title %>
-      <%= f.text_field :title, :value => "thistitle" %>
+      <%= f.text_field :title %>
     </div>
     <div class="field">
       <%= f.label :description %>
-      <%= f.text_area :description, :rows => 5, :class => 'input-xlarge' , :value => "desc"%>
+      <%= f.text_area :description, :rows => 5, :class => 'input-xlarge' %>
+    </div>
+    <div class="field">
+      <%= f.label :latitude %>
+      <%= f.text_field :latitude, :id => 'latitude-box' %>
+    </div>
+    <div class="field">
+      <%= f.label :longitude %>
+      <%= f.text_field :longitude, :id => 'longitude-box' %>
     </div>
     <div class="field">
       <%= f.label :location %>
-      <%= f.text_field :location , :value => "11,22"%>
+      <%= f.text_field :location, :id => 'coords'  %>
     </div>
     <div class="field">
       <%= f.label :tags %>
       <%= hidden_field_tag :tmp_tags %>
-      <ul id="myTags"></ul>
+      <ul id="ul_tags"></ul>
     </div>
     <div class="field">
       <%= f.label :path %>
-      <%= f.file_field :path%>
+      <%= f.file_field :path %>
     </div>
     <div class="actions">
-      <%#= f.submit %>
       <%= submit_tag "Do it!", :class => 'btn btn-primary', :onclick => "passTags()"%>
     </div>
 
@@ -55,4 +62,3 @@
 <script type="text/javascript">
     setLocation('coords');
 </script>
-  

@@ -1,0 +1,13 @@
+<h4>Your current location:</h4>
+<p><%= Geocoder.search("#{@current_location.latitude},#{@current_location.longitude}")[0].formatted_address %></p>
+
+<hr>
+
+<% @sounds.each do |sound| %>
+<p>
+  <strong><%= Geocoder.search(sound.location.split(',')[1] + ',' + sound.location.split(',')[0])[0].formatted_address %>:</strong>
+  <%= Geocoder::Calculations.distance_between([@current_location.latitude, @current_location.longitude],
+                                              [sound.location.split(',')[1], sound.location.split(',')[0]]) %> miles away
+  <%#= @current_location.inspect %>
+</p>
+<% end %>

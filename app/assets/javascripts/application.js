@@ -14,7 +14,7 @@
 //= require jquery-ui
 //= require jquery_ujs
 //= require twitter/bootstrap
-//= require tag-it
+// require_tree .
 
 var play = function(id) {
     var audio = document.getElementById('player');
@@ -24,9 +24,20 @@ var play = function(id) {
         url: '/sounds/' + id + '.json',
         dataType: 'json',
         success: function (data) {
-            audio.src = data.path.url;
-            $('#p-title').html(data.title);
-            $('#p-location').html(data.location);
+            var sound = data.sound
+            var tags = data.tags
+
+            var tags_html = ""
+            for(i in tags) {
+                tags_html += "<span class=\"label label-info\">"+ tags[i].tag_title +"</span>&nbsp;";
+            }
+
+            $('#p-title').html(sound.title);
+            $('#p-description').html(sound.description);
+            $('#p-location').html(sound.location);
+            $('#p-tags').html(tags_html);
+
+            audio.src = sound.path.url;
             audio.play();
         }
     });

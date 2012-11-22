@@ -23,6 +23,16 @@ $(document).ready ->
     lng: 116.4
     lat: 39.93
 
+  GMaps.geolocate
+    success: (position) ->
+      map.setCenter position.coords.latitude, position.coords.longitude
+      map.setZoom 12
+
+      # map.addMarker
+      #   lat: position.coords.latitude
+      #   lng: position.coords.longitude
+      #   animation: google.maps.Animation.DROP
+
   reqLocations = ->
     $.ajax
       url: '/sounds.json'

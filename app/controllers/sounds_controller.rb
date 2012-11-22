@@ -16,10 +16,11 @@ class SoundsController < ApplicationController
   # GET /sounds/1.json
   def show
     @sound = Sound.find(params[:id])
+    @tags = RTagSound.find_all_by_sound_id(@sound.id)
 
     respond_to do |format|
       format.html # show.html.erb
-      format.json { render json: @sound }
+      format.json { render json: {sound: @sound, tags: @tags} }
     end
   end
 
@@ -27,7 +28,6 @@ class SoundsController < ApplicationController
   # GET /sounds/new.json
   def new
     @sound = Sound.new
-    @r_tag_sound = RTagSound.new
 
     respond_to do |format|
       format.html # new.html.erb
@@ -83,29 +83,34 @@ class SoundsController < ApplicationController
     end
   end
 
-  def xxl_test
-    flash[:warning] =  "I am here!!!"
-  end
-
   def store_tags(str_tags, sound_id)
     #split all tags
     tags = str_tags.to_s.split(',')
 
-    #store info into "r_tag_sound"
-
-    #store info into "tags"
     for t in tags
-      tag = Tag.new
-      tag.title = t
-      tag.save
 
+      # If tag not exist in "tags", then create a new one
+      unless tag = Tag.find_by_title(t)
+        tag = Tag.new
+        tag.title = t
+        if not tag.save
+          return false
+        end
+      end
+
+      #store info into "r_tag_sound"
       r_tag_sound = RTagSound.new()
       r_tag_sound.tag_id = tag.id
-      r_tag_sound.tag_title = tag.title
+      r_tag_sound.tag_title = t
       r_tag_sound.sound_id = sound_id
-      r_tag_sound.save
+      if not r_tag_sound.save
+        return false
+      end
+
+
     end
 
     return true
   end
+
 end

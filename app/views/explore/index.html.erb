@@ -1,0 +1,52 @@
+<% content_for :scripts do %>
+<%= javascript_include_tag :explore %>
+<% end %>
+
+<div class="container">
+
+  <div id="map-box-expandable">
+    <div class="map-wrapper">
+      <div id="map-explore"></div>
+    </div>
+
+    <div id="loading-bar">
+      <%= image_tag 'map-spinner.gif' %> Loading sounds ...
+    </div>
+
+    <div id="map-overlay-topleft">
+      <div class="info-box-title">Guess You May Like ...</div>
+      <div class="info-box-long">
+        <div class="location-search-box">
+          <form class="form-search">
+            <div class="input-append">
+              <input type="text" class="span2 search-query" id="location-search-content" placeholder="Get voices from?">
+              <button type="submit" class="btn btn-primary" id="location-search-commit" data-loading-text="Loading...">Search</button>
+            </div>
+          </form>
+        </div>
+        <div id="info-box-list"><!-- here goes some sounds --></div>
+      </div>
+    </div>
+
+    <div id="map-overlay-topright">
+      <div class="info-box-title">Now Playing</div>
+      <div class="info-box">
+        <div class="info-list">
+          <h5 class="info-entry-title" id="p-title">My Voice in Santa Barbara!</h5>
+          <p id="p-description">This is my ultimate test.</p>
+          <div class="info-entry-author">By <a href="#" id="p-author">Juno</a> at <a href="#">Santa Barbara</a></div>
+          <div class="info-entry-labels">
+            <a href="#"><span class="label label-info">Chinese</span></a>
+            <span class="label label-info">life</span>
+            <span class="label label-info">mood</span>
+          </div>
+        </div>
+        <div class="player-wrapper">
+          <audio id="player" src="sounds/1.mp3" controls preload="auto" autobuffer></audio>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  </div>
+</div>
