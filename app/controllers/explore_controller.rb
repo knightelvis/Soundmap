@@ -11,6 +11,20 @@ class ExploreController < ApplicationController
 
   end
 
+  def like(sound_id)
+    if user_signed_in?
+      @current_user = User.find(current_user.id)
+
+      @current_user.likes.each do |like|
+        if like.id == sound_id
+          return true
+        end
+      end
+    end
+
+    false
+  end
+
   def get_nearby_sounds
 
     #@current_location = request.location
@@ -24,7 +38,7 @@ class ExploreController < ApplicationController
       sound_latitude = sound.location.split(',')[1]
       sound_longitude = sound.location.split(',')[0]
 
-      Geocoder.search("#{sound_latitude},#{sound_longitude}")[0].formatted_address
+      #Geocoder.search("#{sound_latitude},#{sound_longitude}")[0].formatted_address
 
       dist = Geocoder::Calculations.distance_between(
           [@current_location.latitude, @current_location.longitude],
@@ -37,7 +51,8 @@ class ExploreController < ApplicationController
             'user_id' => sound.user.id,
             'username' => sound.user.email,
             'data' => Geocoder.search(sound.location.split(',')[1] + ',' + sound.location.split(',')[0])[0].formatted_address,
-            'distance' => dist
+            'distance' => dist,
+            'like' => like(sound.id)
         }
       end
 

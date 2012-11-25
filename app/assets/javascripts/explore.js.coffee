@@ -40,7 +40,9 @@ $(document).ready ->
         $('#loading-bar').fadeIn()
 
       success: (data) ->
+        # debug
         console.log data
+
         $('#location-search-commit').button('reset')
         $('#loading-bar').hide()
 
@@ -72,6 +74,9 @@ $(document).ready ->
         $('#info-box-list').hide ->
           $('#info-box-list').html(html)
           $('#info-box-list').fadeIn()
+          processLike(null)
+
+
 
   play = (item) ->
     audio = document.getElementById 'player'
@@ -85,11 +90,15 @@ $(document).ready ->
     audio.play()
 
   generateList = (item) ->
+
+    icon_html = if item.like then 'icon-heart' else 'icon-heart-empty'
+    #icon_html = 'icon-heart'
+
     html = """
     <div class="info-box-entry">
-      <h5 class="info-entry-title">#{item.sound.title}</h5>
+      <h5 class="info-entry-title">#{item.sound.title} <div><i id="like-#{item.sound.id}" class="#{icon_html} pull-right like-button"></div></i></h5>
       <p>#{item.sound.description}</p>
-      <div class="info-entry-author">By <a href="#">#{item.username}</a> at <a href="#">Santa Barbara</a></div>
+      <div class="info-entry-author">By <a href="#">#{item.username}</a> at <a href="#">#{item.data.split(',')[0]}</a></div>
       <div class="info-entry-labels">
         <a href="#"><span class="label label-info">Chinese</span></a>
         <span class="label label-info">life</span>
@@ -97,3 +106,15 @@ $(document).ready ->
       </div>
     </div>
     """
+
+  hasLike = (user_id, sound_id, like_relation) ->
+    Math.PI
+
+  processLike = (item) ->
+    $('.like-button').each ->
+      $(this).click ->
+        $(this).toggleClass 'icon-heart-empty icon-heart'
+
+      #sound_id = $(this).attr('id').split('-')[1]
+      #user_id = item.user_id
+
