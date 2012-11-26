@@ -7,6 +7,7 @@ Soundmap::Application.routes.draw do
   resources :explore
 
   match "/nearby" => "explore#get_nearby_sounds"
+  match "/like/set/:id" => "explore#set_like"
   match "/user/recent/:id" => "user#recent"
 
   #resources :static_pages

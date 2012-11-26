@@ -41,7 +41,7 @@ $(document).ready ->
 
       success: (data) ->
         # debug
-        console.log data
+        #console.log data
 
         $('#location-search-commit').button('reset')
         $('#loading-bar').hide()
@@ -107,13 +107,19 @@ $(document).ready ->
     </div>
     """
 
-  hasLike = (user_id, sound_id, like_relation) ->
-    Math.PI
-
   processLike = (item) ->
     $('.like-button').each ->
+      sound_id = $(this).attr('id').split('-')[1]
       $(this).click ->
-        $(this).toggleClass 'icon-heart-empty icon-heart'
+        $_this = $(this)
+        $.post("/like/set/#{sound_id}", (data) ->
+
+          console.log data
+
+          $("#like-#{data.sound_id}").toggleClass 'icon-heart-empty icon-heart'
+
+        , 'json')
+        #$(this).toggleClass 'icon-heart-empty icon-heart'
 
       #sound_id = $(this).attr('id').split('-')[1]
       #user_id = item.user_id

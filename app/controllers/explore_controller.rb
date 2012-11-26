@@ -16,13 +16,33 @@ class ExploreController < ApplicationController
       @current_user = User.find(current_user.id)
 
       @current_user.likes.each do |like|
-        if like.id == sound_id
+        if like.sound_id == sound_id
           return true
         end
       end
     end
 
     false
+  end
+
+  def set_like
+    if user_signed_in?
+      #@current_user = User.find(current_user.id)
+      sound_id = params[:id].to_i
+      is_like = false
+      like_result = Like.where('user_id = ? AND sound_id = ?', current_user.id, sound_id)
+      if like_result.length > 0
+        like_result[0].destroy
+        is_like = false
+      else
+        Like.new(:sound_id => sound_id, :user_id => current_user.id).save
+        is_like = true
+      end
+
+      respond_to do |format|
+        format.json { render :json => {:user_id => current_user.id, :sound_id => sound_id, :is_like => is_like} }
+      end
+    end
   end
 
   def get_nearby_sounds
