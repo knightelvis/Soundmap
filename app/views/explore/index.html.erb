@@ -19,11 +19,14 @@
         <div class="location-search-box">
           <form class="form-search">
             <div class="input-append">
-              <input type="text" class="span2 search-query" id="location-search-content" placeholder="Get voices from?">
+              <input type="text" class="span2 search-query" id="location-search-content" placeholder="Get voices from?" value="isla vista">
               <button type="submit" class="btn btn-primary" id="location-search-commit" data-loading-text="Loading...">Search</button>
             </div>
           </form>
         </div>
+        <input type="hidden" id="radio_sound_paths"/>
+        <button id="random_btn" class="btn btn-primary btn-mini" onclick="random_play()" disabled >Random Play</button>
+        <audio hidden id="random_player" controls preload="auto" autobuffer/>
         <div id="info-box-list"><!-- here goes some sounds --></div>
       </div>
     </div>
@@ -35,7 +38,7 @@
           <h5 class="info-entry-title" id="p-title">My Voice in Santa Barbara!</h5>
           <p id="p-description">This is my ultimate test.</p>
           <div class="info-entry-author">By <a href="#" id="p-author">Juno</a> at <a href="#">Santa Barbara</a></div>
-          <div class="info-entry-labels">
+          <div class="info-entry-labels" id="p-tags">
             <a href="#"><span class="label label-info">Chinese</span></a>
             <span class="label label-info">life</span>
             <span class="label label-info">mood</span>

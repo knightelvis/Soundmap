@@ -87,30 +87,78 @@ class SoundsController < ApplicationController
     #split all tags
     tags = str_tags.to_s.split(',')
 
-    for t in tags
-
-      # If tag not exist in "tags", then create a new one
-      unless tag = Tag.find_by_title(t)
-        tag = Tag.new
-        tag.title = t
-        if not tag.save
-          return false
-        end
-      end
-
+    for tag in tags
       #store info into "r_tag_sound"
-      r_tag_sound = RTagSound.new()
-      r_tag_sound.tag_id = tag.id
-      r_tag_sound.tag_title = t
-      r_tag_sound.sound_id = sound_id
-      if not r_tag_sound.save
-        return false
-      end
-
-
+      create_rts(tag, sound_id)
     end
 
     return true
   end
 
+  # update r_tag_sounds
+  def update_tags
+    sound_id = params[:id]
+    #get new and old tags
+    new_tags = params[:tags].to_s.split(',')
+    rtss = RTagSound.find_all_by_sound_id(sound_id)
+
+    #For new tag, create related 'r_tag_sound'
+    for nt in new_tags
+      exist = false
+      for rts in rtss
+         if nt == rts.tag_title
+           exist = true
+           break
+         end
+      end
+
+      if not exist
+        create_rts(nt, sound_id)
+      end
+    end
+
+    #For removed tag, delete related 'r_tag_sound'
+    for rts in rtss
+      exist = false
+      for nt in new_tags
+        if nt == rts.tag_title
+          exist = true
+          break
+        end
+      end
+
+      if not exist
+        delete_rts(rts)
+      end
+    end
+
+
+    rtss = RTagSound.find_all_by_sound_id(params[:id])
+    respond_to do |format|
+      format.json { render json: rtss }
+    end
+  end
+
+  #store info into "r_tag_sound"
+  def create_rts(tag_title, sound_id)
+    unless tag = Tag.find_by_title(tag_title)
+      tag = Tag.new
+      tag.set(tag_title)
+      tag.save
+    end
+
+    r_tag_sound = RTagSound.new
+    r_tag_sound.set(tag.id, tag.title, sound_id)
+    r_tag_sound.save
+    tag.increment()
+
+    return r_tag_sound
+  end
+
+  #delete r_tag_sound
+  def delete_rts(rts)
+    tag = Tag.find(rts.tag_id)
+    tag.decrement()
+    rts.destroy
+  end
 end

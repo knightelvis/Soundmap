@@ -1,5 +1,6 @@
 <% content_for :scripts do %>
-<%= javascript_include_tag :map_view %>
+    <%= javascript_include_tag :map_view %>
+    <%= javascript_include_tag "tag-it" %>
 <% end %>
 
 <div class="container">
@@ -14,8 +15,8 @@
       <div id="info-box">
         <div id="info-list">
           <h5 class="info-entry-title" id="p-title">My Voice in Santa Barbara!</h5>
-          <p>This is my ultimate test.</p>
-          <div class="info-entry-author">By <a href="#">Juno</a> at <a href="#">Santa Barbara</a></div>
+          <p id="p-description">This is my ultimate test.</p>
+          <div class="info-entry-author">By <a href="#" id="p-author">Juno</a> at <a href="#">Santa Barbara</a></div>
           <div class="info-entry-labels" id="p-tags">
             <a href="#"><span class="label label-info">Chinese</span></a>
             <span class="label label-info">life</span>
