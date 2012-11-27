@@ -102,7 +102,7 @@ var setLocation = function(id) {
     }
 }
 
-var random_play = function() {
+var play_radio = function() {
     var str = $('#radio_sound_paths').val()
 
     if(str[str.length-1] == ','){
@@ -123,4 +123,8 @@ var random_play = function() {
         audio.play()
     })
 
+}
+var stop_radio = function() {
+    audio = document.getElementById('random_player')
+    audio.pause()
 }

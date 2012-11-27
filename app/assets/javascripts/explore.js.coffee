@@ -30,7 +30,8 @@ $(document).ready ->
     return false
 
   getNearybySounds = (current, distance) ->
-    $('#random_btn').attr("disabled", "disabled")
+    $('#play_radio_btn').attr("disabled", "disabled")
+    $('#stop_radio_btn').attr("disabled", "disabled")
 
     $.ajax
       url: '/nearby.json'
@@ -76,7 +77,9 @@ $(document).ready ->
 
         #cache sounds' file path
         $('#radio_sound_paths').val(sound_paths)
-        $('#random_btn').removeAttr("disabled")
+        $('#play_radio_btn').removeAttr("disabled")
+        $('#stop_radio_btn').removeAttr("disabled")
+
 
         $('#info-box-list').hide ->
           $('#info-box-list').html(html)
