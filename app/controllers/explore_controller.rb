@@ -27,10 +27,11 @@ class ExploreController < ApplicationController
 
   def set_like
     if user_signed_in?
-      #@current_user = User.find(current_user.id)
+      @current_user = User.find(current_user.id)
       sound_id = params[:id].to_i
       is_like = false
-      like_result = Like.where('user_id = ? AND sound_id = ?', current_user.id, sound_id)
+      like_result = Like.where('user_id = ? AND favored_sound_id = ?', current_user.id, sound_id)
+
       if like_result.length > 0
         like_result[0].destroy
         is_like = false

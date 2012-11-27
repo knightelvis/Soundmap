@@ -26,15 +26,13 @@ class Sound < ActiveRecord::Base
 
   mount_uploader :path, SoundUploader
 
-  #attr_accessible :upload_file
-  #
-  #
-  #def upload_file=(upload)
-  #  name =  upload.original_filename
-  #
-  #  # create the file path
-  #  self.path = "sounds/" + name
-  #  # write the file
-  #  File.open("public/" + self.path, "wb") { |f| f.write(upload.read) }
-  #end
+  default_scope order: 'sounds.created_at DESC'
+
+  def self.from_users_followed_by(user)
+    followed_user_ids = "SELECT followed_id FROM relationships
+                         WHERE follower_id = :user_id"
+    where("user_id IN (#{followed_user_ids}) OR user_id = :user_id",
+          user_id: user.id)
+  end
+
 end
