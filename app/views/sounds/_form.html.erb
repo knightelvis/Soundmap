@@ -1,3 +1,14 @@
+<script>
+    $(function(){
+        $('#ul_tags').tagit();
+    });
+    function passTags(){
+        var tags = $('#ul_tags').tagit("assignedTags");
+        $('#tmp_tags').val(tags);
+        //alert($('#tmp_tags').val());
+    }
+</script>
+
 <%= form_for(@sound, :multipart => true, :class => 'form-horizontal') do |f| %>
     <% if @sound.errors.any? %>
         <div id="error_explanation" class="alert alert-error alert-block">
@@ -34,12 +45,16 @@
       <%= f.text_field :location, :id => 'coords'  %>
     </div>
     <div class="field">
+      <%= f.label :tags %>
+      <%= hidden_field_tag :tmp_tags %>
+      <ul id="ul_tags"></ul>
+    </div>
+    <div class="field">
       <%= f.label :path %>
       <%= f.file_field :path %>
     </div>
     <div class="actions">
-      <%#= f.submit %>
-      <%= submit_tag "Do it!", :class => 'btn btn-primary'%>
+      <%= submit_tag "Do it!", :class => 'btn btn-primary', :onclick => "passTags()"%>
     </div>
 
 <% end %>

@@ -24,6 +24,12 @@
             </div>
           </form>
         </div>
+        <div id="radio-box" class="location-search-box">
+            <input type="hidden" id="radio_sound_paths"/>
+            <button id="play_radio_btn" class="btn btn-primary btn-mini" onclick="play_radio()" disabled >Play Radio</button>
+            <button id="stop_radio_btn" class="btn btn-primary btn-mini" onclick="stop_radio()" >Stop Radio</button>
+            <audio id="random_player" preload="auto" autobuffer/>
+        </div>
         <div id="info-box-list"><!-- here goes some sounds --></div>
       </div>
     </div>
@@ -34,8 +40,8 @@
         <div class="info-list">
           <h5 class="info-entry-title" id="p-title">My Voice in Santa Barbara!</h5>
           <p id="p-description">This is my ultimate test.</p>
-          <div class="info-entry-author">By <a href="#" id="p-author">Juno</a></div>
-          <div class="info-entry-labels">
+          <div class="info-entry-author">By <a href="#" id="p-author">Juno</a> at <a href="#">Santa Barbara</a></div>
+          <div class="info-entry-labels" id="p-tags">
             <a href="#"><span class="label label-info">Chinese</span></a>
             <span class="label label-info">life</span>
             <span class="label label-info">mood</span>

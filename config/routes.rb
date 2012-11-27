@@ -16,6 +16,7 @@ Soundmap::Application.routes.draw do
   match "/nearby" => "explore#get_nearby_sounds"
   match "/like/set/:id" => "explore#set_like"
   match "/user/recent/:id" => "user#recent"
+  match '/sounds/:id/update_tags', :controller => 'sounds', :action => 'update_tags'
 
   #resources :static_pages
 

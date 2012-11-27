@@ -30,6 +30,9 @@ $(document).ready ->
     return false
 
   getNearybySounds = (current, distance) ->
+    $('#play_radio_btn').attr("disabled", "disabled")
+    $('#stop_radio_btn').attr("disabled", "disabled")
+
     $.ajax
       url: '/nearby.json'
       dataType: 'json'
@@ -52,8 +55,10 @@ $(document).ready ->
         map.removeMarkers()
 
         html = ''
+        sound_paths = ''
 
         for location in data.data
+          sound_paths += location.sound.path.url + ','
 
           html += generateList(location)
 
@@ -70,6 +75,12 @@ $(document).ready ->
                   play(item))(location)
 
             animation: google.maps.Animation.DROP
+
+        #cache sounds' file path
+        $('#radio_sound_paths').val(sound_paths)
+        $('#play_radio_btn').removeAttr("disabled")
+        $('#stop_radio_btn').removeAttr("disabled")
+
 
         $('#info-box-list').hide ->
           $('#info-box-list').html(html)
