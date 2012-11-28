@@ -23,6 +23,14 @@ ActiveRecord::Schema.define(:version => 20121126042245) do
   add_index "likes", ["user_id"], :name => "index_likes_on_user_id"
   add_index "likes", ["user_id"], :name => "index_likes_on_user_id_and_sound_id", :unique => true
 
+  create_table "r_tag_sounds", :force => true do |t|
+    t.integer  "tag_id"
+    t.string   "tag_title"
+    t.integer  "sound_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "relationships", :force => true do |t|
     t.integer  "follower_id"
     t.integer  "followed_id"
@@ -44,6 +52,13 @@ ActiveRecord::Schema.define(:version => 20121126042245) do
     t.integer  "user_id"
     t.string   "latitude"
     t.string   "longitude"
+  end
+
+  create_table "tags", :force => true do |t|
+    t.string   "title"
+    t.integer  "count"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "users", :force => true do |t|
