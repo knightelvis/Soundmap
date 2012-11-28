@@ -32,7 +32,11 @@
 
   <div class="row-fluid" id="main-box">
     <div class="span8" id="news-feed-box">
-
+    <ol>
+      <% @feed_items.each do |feed_item| %>
+      <li><%= feed_item.title %> by <%= feed_item.user.email %></li>
+      <% end %>
+    </ol>
     </div>
 
     <div class="span4">

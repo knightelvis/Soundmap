@@ -3,10 +3,18 @@ Soundmap::Application.routes.draw do
 
   resources :sounds
   resources :map_view
-  resources :user
   resources :explore
 
+  resources :users do
+    member do
+      get :following, :followers, :sounds
+    end
+  end
+
+  resources :relationships, only: [:create, :destroy]
+
   match "/nearby" => "explore#get_nearby_sounds"
+  match "/like/set/:id" => "explore#set_like"
   match "/user/recent/:id" => "user#recent"
   match '/sounds/:id/update_tags', :controller => 'sounds', :action => 'update_tags'
 

@@ -43,8 +43,9 @@ $(document).ready ->
         $('#loading-bar').fadeIn()
 
       success: (data) ->
-        #alert(data.data[1].sound.path.url.substr(25))
-        console.log data
+        # debug
+        #console.log data
+
         $('#location-search-commit').button('reset')
         $('#loading-bar').hide()
 
@@ -84,14 +85,15 @@ $(document).ready ->
         $('#info-box-list').hide ->
           $('#info-box-list').html(html)
           $('#info-box-list').fadeIn()
+          processLike(null)
+
+
 
   play = (item) ->
     audio = document.getElementById 'player'
     audio.pause()
 
-    audio.src = item.sound.path.url.substr(54)
-    #audio.src = item.sound.path.url
-
+    audio.src = item.sound.path.url
     $('#p-title').html item.sound.title
     $('#p-description').html item.sound.description
     $('#p-location').html item.sound.location
@@ -99,11 +101,15 @@ $(document).ready ->
     audio.play()
 
   generateList = (item) ->
+
+    icon_html = if item.like then 'icon-heart' else 'icon-heart-empty'
+    #icon_html = 'icon-heart'
+
     html = """
     <div class="info-box-entry">
-      <h5 class="info-entry-title">#{item.sound.title}</h5>
+      <h5 class="info-entry-title">#{item.sound.title} <div><i id="like-#{item.sound.id}" class="#{icon_html} pull-right like-button"></div></i></h5>
       <p>#{item.sound.description}</p>
-      <div class="info-entry-author">By <a href="#">#{item.username}</a> at <a href="#">Santa Barbara</a></div>
+      <div class="info-entry-author">By <a href="#">#{item.username}</a> at <a href="#">#{item.data.split(',')[0]}</a></div>
       <div class="info-entry-labels">
         <a href="#"><span class="label label-info">Chinese</span></a>
         <span class="label label-info">life</span>
@@ -111,3 +117,21 @@ $(document).ready ->
       </div>
     </div>
     """
+
+  processLike = (item) ->
+    $('.like-button').each ->
+      sound_id = $(this).attr('id').split('-')[1]
+      $(this).click ->
+        $_this = $(this)
+        $.post("/like/set/#{sound_id}", (data) ->
+
+          console.log data
+
+          $("#like-#{data.sound_id}").toggleClass 'icon-heart-empty icon-heart'
+
+        , 'json')
+        #$(this).toggleClass 'icon-heart-empty icon-heart'
+
+      #sound_id = $(this).attr('id').split('-')[1]
+      #user_id = item.user_id
+

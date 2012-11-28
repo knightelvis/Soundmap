@@ -11,14 +11,17 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121119084946) do
+ActiveRecord::Schema.define(:version => 20121126042245) do
 
   create_table "likes", :force => true do |t|
     t.integer  "user_id"
-    t.integer  "sound_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
+    t.integer  "favored_sound_id"
   end
+
+  add_index "likes", ["user_id"], :name => "index_likes_on_user_id"
+  add_index "likes", ["user_id"], :name => "index_likes_on_user_id_and_sound_id", :unique => true
 
   create_table "r_tag_sounds", :force => true do |t|
     t.integer  "tag_id"
@@ -27,6 +30,17 @@ ActiveRecord::Schema.define(:version => 20121119084946) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
+
+  create_table "relationships", :force => true do |t|
+    t.integer  "follower_id"
+    t.integer  "followed_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  add_index "relationships", ["followed_id"], :name => "index_relationships_on_followed_id"
+  add_index "relationships", ["follower_id", "followed_id"], :name => "index_relationships_on_follower_id_and_followed_id", :unique => true
+  add_index "relationships", ["follower_id"], :name => "index_relationships_on_follower_id"
 
   create_table "sounds", :force => true do |t|
     t.string   "title"

@@ -1,0 +1,28 @@
+<div class="container">
+  <h3><%= @user.email %></h3>
+  <% unless @user.id == current_user.id %>
+      <div id="follow_form">
+        <% if current_user.following?(@user) %>
+            <%= render 'unfollow' %>
+        <% else %>
+            <%= render 'follow' %>
+        <% end %>
+      </div>
+  <% end %>
+  <div class="row-fluid">
+      <div class="span6">
+        <h4>User's Sounds</h4>
+        <hr>
+        <% @user.sounds.each do |sound| %>
+        <p><%= sound.title %></p>
+        <% end %>
+      </div>
+      <div class="span6">
+        <h4>User's Favored Sounds</h4>
+        <hr>
+        <% @user.favored_sounds.each do |sound| %>
+            <p><%= sound.title %></p>
+        <% end %>
+      </div>
+  </div>
+</div>

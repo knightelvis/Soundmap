@@ -1,7 +1,7 @@
 class Like < ActiveRecord::Base
-  attr_accessible :sound_id, :user_id
+  attr_accessible :favored_sound_id, :user_id
 
   belongs_to :user
-  belongs_to :sound
+  belongs_to :favored_sound, :class_name => 'Sound'
 
 end

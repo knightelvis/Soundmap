@@ -7,6 +7,9 @@ gem "therubyracer"
 gem "less-rails"
 gem "twitter-bootstrap-rails"
 
+gem 'will_paginate'
+gem 'bootstrap-will_paginate'
+
 gem "mysql2"
 
 gem 'geocoder'
