@@ -12,17 +12,35 @@
   <div class="row-fluid">
       <div class="span6">
         <h4>User's Sounds</h4>
-        <hr>
-        <% @user.sounds.each do |sound| %>
-        <p><%= sound.title %></p>
-        <% end %>
+        <div class="sound-item-box">
+          <% @user.sounds.each do |sound| %>
+              <div class="sound-item">
+                <div class="sound-item-title"><%= link_to sound.title, "/sounds/#{sound.id}" %></div>
+                <div class="pull-right">
+                  <% RTagSound.find_all_by_sound_id(sound.id).each do |tag| %>
+                      <span class="label label-info"><%= link_to tag.tag_title, "/tags/#{tag.tag_id}" %></span>
+                  <% end %>
+                </div>
+                by <%= link_to sound.user.email, "/users/#{sound.user.id}" %>
+              </div>
+          <% end %>
+        </div>
       </div>
       <div class="span6">
         <h4>User's Favored Sounds</h4>
-        <hr>
-        <% @user.favored_sounds.each do |sound| %>
-            <p><%= sound.title %></p>
-        <% end %>
+        <div class="sound-item-box">
+          <% @user.favored_sounds.each do |sound| %>
+              <div class="sound-item">
+                <div class="sound-item-title"><%= link_to sound.title, "/sounds/#{sound.id}" %></div>
+                <div class="pull-right">
+                  <% RTagSound.find_all_by_sound_id(sound.id).each do |tag| %>
+                      <span class="label label-info"><%= link_to tag.tag_title, "/tags/#{tag.tag_id}" %></span>
+                  <% end %>
+                </div>
+                by <%= link_to sound.user.email, "/users/#{sound.user.id}" %>
+              </div>
+          <% end %>
+        </div>
       </div>
   </div>
 </div>

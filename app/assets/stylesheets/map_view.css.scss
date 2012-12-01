@@ -40,6 +40,13 @@
   box-shadow: 0 0 10px #999;
 }
 
+#expand-overlay {
+  position: absolute;
+  left: 4px;
+  bottom: 4px;
+
+}
+
 #info-box-title {
   background-color: #575757;
   color: #FFF;
@@ -70,9 +77,17 @@ audio {
 
 #news-feed-box {
   //border-right: 1px solid #E3E3E3;
+  .news-feed-item-title {
+    font-size: 130%;
+  }
+  .news-feed-item {
+    padding: 10px;
+    border-top: 1px solid #e3e3e3;
+  }
 }
 
-#xray {
-  //border-left: 1px solid #E3E3E3;
+.label {
+  a {
+    color: #ffffff;
+  }
 }
-

@@ -1,13 +1,4 @@
-<script>
-    $(function(){
-        $('#ul_tags').tagit();
-    });
-    function passTags(){
-        var tags = $('#ul_tags').tagit("assignedTags");
-        $('#tmp_tags').val(tags);
-        //alert($('#tmp_tags').val());
-    }
-</script>
+
 
 <%= form_for(@sound, :multipart => true, :class => 'form-horizontal') do |f| %>
     <% if @sound.errors.any? %>
@@ -60,5 +51,12 @@
 <% end %>
 
 <script type="text/javascript">
-    setLocation('coords');
+    $(document).ready(function(){
+        $('#ul_tags').tagit();
+    });
+    function passTags(){
+        var tags = $('#ul_tags').tagit("assignedTags");
+        $('#tmp_tags').val(tags);
+        //alert($('#tmp_tags').val());
+    }
 </script>

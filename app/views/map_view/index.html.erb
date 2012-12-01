@@ -28,15 +28,29 @@
         </div>
       </div>
     </div>
+
+    <div id="expand-overlay">
+      <button id="expand-btn" class="btn btn-primary"><i class="icon-resize-full"></i></button>
+    </div>
   </div>
 
   <div class="row-fluid" id="main-box">
     <div class="span8" id="news-feed-box">
-    <ol>
-      <% @feed_items.each do |feed_item| %>
-      <li><%= feed_item.title %> by <%= feed_item.user.email %></li>
-      <% end %>
-    </ol>
+      <h4>What&rsquo;s New</h4>
+        <% if user_signed_in? %>
+          <% @feed_items.each do |feed_item| %>
+          <div class="news-feed-item">
+            <div class="news-feed-item-title"><%= link_to feed_item.title, "/sounds/#{feed_item.id}" %></div>
+            <div class="pull-right">
+              <% RTagSound.find_all_by_sound_id(feed_item.id).each do |tag| %>
+              <span class="label label-info"><%= link_to tag.tag_title, "/tags/#{tag.tag_id}" %></span>
+              <% end %>
+            </div>
+            by <%= link_to feed_item.user.email, "/users/#{feed_item.user.id}" %>
+          </div>
+          <% end %>
+        <% end %>
+      <%= will_paginate @feed_items %>
     </div>
 
     <div class="span4">
@@ -48,25 +62,6 @@
             <%= submit_tag('Invite!', :class => 'btn btn-primary') %>
           </div>
         <% end %>
-      </div>
-
-      <div>
-
-        <p>Lorem</p>
-        <p>Lorem</p>
-        <p>Lorem</p>
-        <p>Lorem</p>
-
-        <% if user_signed_in? %>
-        <table class="table">
-          <% @sounds.each do |sound| %>
-          <tr>
-            <td class="span2"><%= sound.title %></td>
-            <td class="span1"><button class="btn btn-primary btn-mini" onclick="play('<%= sound.id %>')">Play</button></td></tr>
-          <% end %>
-        </table>
-        <% end %>
-
       </div>
 
       <div id="control-box">
