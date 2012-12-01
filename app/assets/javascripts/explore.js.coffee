@@ -81,10 +81,12 @@ $(document).ready ->
         $('#play_radio_btn').removeAttr("disabled")
         $('#stop_radio_btn').removeAttr("disabled")
 
+        #alert html
 
-        $('#info-box-list').hide ->
+        $('#info-box-list').fadeOut ->
           $('#info-box-list').html(html)
           $('#info-box-list').fadeIn()
+          #alert html
           processLike(null)
 
 

@@ -16,7 +16,7 @@ class ExploreController < ApplicationController
       @current_user = User.find(current_user.id)
 
       @current_user.likes.each do |like|
-        if like.sound_id == sound_id
+        if like.favored_sound_id == sound_id
           return true
         end
       end
@@ -36,7 +36,7 @@ class ExploreController < ApplicationController
         like_result[0].destroy
         is_like = false
       else
-        Like.new(:sound_id => sound_id, :user_id => current_user.id).save
+        Like.new(:favored_sound_id => sound_id, :user_id => current_user.id).save
         is_like = true
       end
 
@@ -71,7 +71,7 @@ class ExploreController < ApplicationController
             'sound' => sound,
             'user_id' => sound.user.id,
             'username' => sound.user.email,
-            'data' => Geocoder.search(sound.location.split(',')[1] + ',' + sound.location.split(',')[0])[0].formatted_address,
+            'data' => 'A Place', #Geocoder.search(sound.location.split(',')[1] + ',' + sound.location.split(',')[0])[0].formatted_address,
             'distance' => dist,
             'like' => like(sound.id)
         }
