@@ -24,16 +24,9 @@ ActiveRecord::Schema.define(:version => 20121128124921) do
   add_index "likes", ["user_id", "favored_sound_id"], :name => "index_likes_on_user_id_and_favored_sound_id", :unique => true
   add_index "likes", ["user_id"], :name => "index_likes_on_user_id"
 
-  create_table "posts", :force => true do |t|
-    t.string   "name"
-    t.string   "title"
-    t.text     "content"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
   create_table "r_tag_sounds", :force => true do |t|
     t.integer  "tag_id"
+    t.string   "tag_title"
     t.integer  "sound_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
@@ -63,7 +56,8 @@ ActiveRecord::Schema.define(:version => 20121128124921) do
   end
 
   create_table "tags", :force => true do |t|
-    t.string   "titile"
+    t.string   "title"
+    t.integer  "count"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end

@@ -47,4 +47,16 @@ class User < ActiveRecord::Base
     Sound.from_users_followed_by(self)
   end
 
+  def liking?(favored_sound)
+    likes.find_by_favored_sound_id(favored_sound.id)
+  end
+
+  def like!(favored_sound)
+    likes.create!(favored_sound_id: favored_sound.id)
+  end
+
+  def unlike!(favored_sound)
+    likes.find_by_favored_sound_id(favored_sound.id).destroy
+  end
+
 end
