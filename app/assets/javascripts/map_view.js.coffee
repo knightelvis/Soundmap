@@ -22,14 +22,16 @@ $(document).ready ->
     div: '#map'
     lng: 116.4
     lat: 39.93
+    scrollwheel: false
 
     bounds_changed: ->
       mapLatLngBounds = map.map.getBounds()
-      maxX = mapLatLngBounds.getNorthEast().lng()
-      maxY = mapLatLngBounds.getNorthEast().lat()
-      minX = mapLatLngBounds.getSouthWest().lng()
-      minY = mapLatLngBounds.getSouthWest().lat()
-
+      bounds =
+        maxX: mapLatLngBounds.getNorthEast().lng()
+        maxY: mapLatLngBounds.getNorthEast().lat()
+        minX: mapLatLngBounds.getSouthWest().lng()
+        minY: mapLatLngBounds.getSouthWest().lat()
+      reqLocations(bounds)
       #alert [maxX, maxY, minX, minY]
 
   GMaps.geolocate
@@ -43,11 +45,15 @@ $(document).ready ->
       #   animation: google.maps.Animation.DROP
 
 
-  reqLocations = ->
+  reqLocations = (bounds) ->
+
+    first_time = true
+    map.removeMarkers()
 
     $.ajax
-      url: '/sounds.json'
+      url: '/lookup.json'
       dataType: 'json'
+      data: bounds
       success: (data) ->
         #alert data
 
@@ -57,7 +63,7 @@ $(document).ready ->
 #        console.log data.length
 
         if first_time
-          new_locations = data[0..10]
+          new_locations = data
         else
           new_locations = getNewLocations(location_list, data)
 
@@ -90,7 +96,7 @@ $(document).ready ->
               + '<br><button onclick="play(\'' + location.id + '\')" class="btn btn-mini btn-primary" id="play' + cid + '"><i class="icon-heart"></i> Play</button>' \
               + '<br><strong>Track:</strong>' + location.path.url
 
-            animation: google.maps.Animation.DROP
+            #animation: google.maps.Animation.DROP
 
           cid += 1
 
@@ -113,4 +119,4 @@ $(document).ready ->
       $('#map').animate
         height: '250px'
 
-  reqLocations()
+  #reqLocations()

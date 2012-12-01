@@ -23,6 +23,7 @@ Soundmap::Application.routes.draw do
   match "/like/set/:id" => "explore#set_like"
   match "/user/recent/:id" => "user#recent"
   match '/sounds/:id/update_tags', :controller => 'sounds', :action => 'update_tags'
+  match "/lookup" => "sounds#get_sounds_in_bound"
 
   #resources :static_pages
 
