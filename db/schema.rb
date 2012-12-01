@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121126042245) do
+ActiveRecord::Schema.define(:version => 20121128124921) do
 
   create_table "likes", :force => true do |t|
     t.integer  "user_id"
@@ -20,12 +20,20 @@ ActiveRecord::Schema.define(:version => 20121126042245) do
     t.integer  "favored_sound_id"
   end
 
+  add_index "likes", ["favored_sound_id"], :name => "index_likes_on_favored_sound_id"
+  add_index "likes", ["user_id", "favored_sound_id"], :name => "index_likes_on_user_id_and_favored_sound_id", :unique => true
   add_index "likes", ["user_id"], :name => "index_likes_on_user_id"
-  add_index "likes", ["user_id"], :name => "index_likes_on_user_id_and_sound_id", :unique => true
+
+  create_table "posts", :force => true do |t|
+    t.string   "name"
+    t.string   "title"
+    t.text     "content"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "r_tag_sounds", :force => true do |t|
     t.integer  "tag_id"
-    t.string   "tag_title"
     t.integer  "sound_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
@@ -55,8 +63,7 @@ ActiveRecord::Schema.define(:version => 20121126042245) do
   end
 
   create_table "tags", :force => true do |t|
-    t.string   "title"
-    t.integer  "count"
+    t.string   "titile"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end

@@ -12,6 +12,15 @@ class SoundsController < ApplicationController
     end
   end
 
+  def get_sounds_in_bound
+    maxX = params[:maxX].to_f
+    maxY = params[:maxY].to_f
+    minX = params[:minX].to_f
+    minY = params[:minX].to_f
+
+    @sounds = Sound.where('latitude > ?')
+  end
+
   # GET /sounds/1
   # GET /sounds/1.json
   def show
@@ -38,6 +47,10 @@ class SoundsController < ApplicationController
   # GET /sounds/1/edit
   def edit
     @sound = Sound.find(params[:id])
+    unless current_user.id == @sound.user.id
+      flash[:error] = 'You can only edit your own sounds!'
+      redirect_to '/'
+    end
   end
 
   # POST /sounds

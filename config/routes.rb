@@ -11,6 +11,12 @@ Soundmap::Application.routes.draw do
     end
   end
 
+  resources :tags do
+    member do
+
+    end
+  end
+
   resources :relationships, only: [:create, :destroy]
 
   match "/nearby" => "explore#get_nearby_sounds"

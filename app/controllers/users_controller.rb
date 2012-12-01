@@ -1,5 +1,16 @@
 class UsersController < ApplicationController
+
+  before_filter :authenticate_user!
+
+  def index
+
+    @current_page = 'users'
+    @users = User.paginate(:page => params[:page], :per_page => 15)
+
+  end
+
   def show
+    @current_page = 'sounds'
     @user = User.find(params[:id])
 
     respond_to do |format|
@@ -9,6 +20,7 @@ class UsersController < ApplicationController
   end
 
   def sounds
+
     @user = User.find(params[:id])
 
     respond_to do |format|

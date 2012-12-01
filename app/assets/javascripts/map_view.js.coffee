@@ -23,6 +23,15 @@ $(document).ready ->
     lng: 116.4
     lat: 39.93
 
+    bounds_changed: ->
+      mapLatLngBounds = map.map.getBounds()
+      maxX = mapLatLngBounds.getNorthEast().lng()
+      maxY = mapLatLngBounds.getNorthEast().lat()
+      minX = mapLatLngBounds.getSouthWest().lng()
+      minY = mapLatLngBounds.getSouthWest().lat()
+
+      #alert [maxX, maxY, minX, minY]
+
   GMaps.geolocate
     success: (position) ->
       map.setCenter position.coords.latitude, position.coords.longitude
@@ -33,7 +42,9 @@ $(document).ready ->
       #   lng: position.coords.longitude
       #   animation: google.maps.Animation.DROP
 
+
   reqLocations = ->
+
     $.ajax
       url: '/sounds.json'
       dataType: 'json'
@@ -46,7 +57,7 @@ $(document).ready ->
 #        console.log data.length
 
         if first_time
-          new_locations = data
+          new_locations = data[0..10]
         else
           new_locations = getNewLocations(location_list, data)
 
@@ -60,8 +71,10 @@ $(document).ready ->
         cid = 0
         for location in new_locations
 
-          location_lng = parseFloat(location.location.split(',')[0])
-          location_lat = parseFloat(location.location.split(',')[1])
+          location_lng = parseFloat(location.latitude)
+          location_lat = parseFloat(location.longitude)
+          #location_lng = parseFloat(location.location.split(',')[0])
+          #location_lat = parseFloat(location.location.split(',')[1])
 
           map.addMarker
             lat: location_lat
@@ -89,6 +102,15 @@ $(document).ready ->
 
         first_time = false
 
-    setTimeout(reqLocations, 1000 * 10)
+    #setTimeout(reqLocations, 1000 * 10)
+
+  $('#expand-btn').click ->
+    $('#expand-btn i').toggleClass 'icon-resize-full icon-resize-small'
+    if $('#expand-btn i').hasClass 'icon-resize-small'
+      $('#map').animate
+        height: '500px'
+    else
+      $('#map').animate
+        height: '250px'
 
   reqLocations()
