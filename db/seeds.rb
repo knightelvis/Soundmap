@@ -782,7 +782,7 @@ def get_location(locations, city_id)
 end
 
 ####Debug Only#####
-local_filename = "/Users/susen/seed_log.txt"
+local_filename = "/home/seed_log.txt"
 logger = File.open(local_filename, 'w')
 debug = true
 def log(debug, file, info)
@@ -792,81 +792,95 @@ def log(debug, file, info)
 end
 #########
 
-user_num = 100#5
-tag_num = 100#5
-sound_num = 1000#20
-tn = 5 #every sound have tn tags
+user_num = 1000#5
+tag_num = 1000#5
+sound_num = 100000#20
+tn = 4 #every sound have tn tags
 rts_num = tn*sound_num
-like_num = 25
-follow_num = 25
+like_num = 50
+follow_num = 50
 
-log(debug, logger, "User: user_id")
 #Generate Users
-user_num.times do
-  user = User.create(:email=>Faker::Internet.email, :password=>"111111", :password_confirmation=>"111111")
-  log(debug, logger, user.id.to_s)
+puts "start user set"
+users = Set.new()
+while users.size() < user_num
+  users.add(Faker::Internet.email)
 end
+puts "user set done"
+puts users.inspect
+users.each do |user_email|
+  User.create(:email => user_email.to_s.dup, :password => "123456", :password_confirmation => "123456")
+end
+puts "users done"
 
 
-log(debug, logger, "Sound: sound_id, location")
 #Generate Sounds
-sound_num.times do |i|
+puts "start sound"
+start = Time.now
+sound_num.times do
   #user_id = i%user_num + 1 # from 1 to user_num
   user_id = rand(1..user_num)
   location = get_location(city_locations, rand(0..city_locations.length - 1))
-  log(debug, logger, location.to_s)
-  sound = Sound.create(:location=>"#{location['long']},#{location['lat']}", :longitude => location["long"], :latitude => location["lat"], :description => Faker::Lorem.sentence, :path => '0.mp3', :title => Faker::Lorem.sentence, :user_id => user_id)
-  log(debug, logger, sound.id.to_s+", "+sound.location)
+  #Sound.create(:location=>"#{location['long']},#{location['lat']}", :longitude => location["long"], :latitude => location["lat"], :description => Faker::Lorem.sentence, :path => '0.mp3', :title => Faker::Lorem.sentence, :user_id => user_id)
+  log(debug, logger, "INSERT INTO sounds(location, longitude, latitude, description, path, title, user_id) VALUES ('#{location['long']},#{location['lat']}', '#{location["long"]}', '#{location["lat"]}', '#{Faker::Lorem.sentence}', '0.mp3', '#{Faker::Lorem.sentence}', #{user_id});")
 end
+puts "Takes #{Time.now - start} seconds for #{sound_num} inserts"
 
-log(debug, logger, "Follow: follower, user")
 #Every user has 'follow_num' followers
-users = User.all
-for user in users
-  follow_num.times do
-    follower = User.find(rand(1..user_num))
+puts "start following"
+user_num.times do |user_id|
 
-    while follower.following?(user)
-      follower = User.find(rand(1..user_num))
+  followers = Set.new()
+  while followers.size() < follow_num
+    follower_id = rand(1..user_num)
+    if follower_id != user_id
+      followers.add(rand(1..user_num))
     end
+  end
+  followers.each do |follower|
+    #Relationship.create(follower_id: follower, followed_id: user_id)
+    log(debug, logger, "INSERT INTO relationships(follower_id, followed_id) VALUES (#{follower}, #{user_id});")
+  end
 
-    follower.follow!(user)
-    log(debug, logger, follower.id.to_s+", "+user.id.to_s)
+end
+
+# generating like relations
+puts "start favoring"
+user_num.times do |user_id|
+
+  favored_sounds = Set.new()
+  while favored_sounds.size() < like_num
+    favored_sounds.add(rand(1..sound_num))
+  end
+  favored_sounds.each do |favored_sound_id|
+    #Like.create(favored_sound_id: favored_sound_id, user_id: user_id)
+    log(debug, logger, "INSERT INTO likes(user_id, favored_sound_id) VALUES (#{user_id}, #{favored_sound_id});")
   end
 end
 
-
-log(debug, logger, "Like: user, sound")
-#Every user has 'like_num' favored sounds
-#users = User.all
-for user in users
-  like_num.times do
-    sound = Sound.find(rand(1..sound_num))
-
-    while user.liking?(sound)
-      sound = Sound.find(rand(1..sound_num))
-    end
-
-    user.like!(sound)
-    log(debug, logger, user.id.to_s+", "+sound.id.to_s)
-  end
-end
-
-log(debug, logger, "Tag: tag_id")
 #Generate tags
-tag_num.times do
-  tag = Tag.create(:title=>Faker::Lorem.word, :count=>0)
-  log(debug, logger, tag.id.to_s)
+puts "start tags"
+
+tags = Set.new()
+while tags.size() < tag_num
+  tags.add(Faker::Lorem.word)
+end
+tags.each do |tag_title|
+  #Tag.create(:title => tag_title.to_s.dup)
+  log(debug, logger, "INSERT INTO tags(title) VALUES ('#{tag_title.to_s.dup}');")
 end
 
-log(debug, logger, "R_Tag_Sound: tag_id, sound_id")
 #Generate relationship between tag and sound
-rts_num.times do |i|
-  sound_id = i/tn + 1
-  tag_id = rand(1..tag_num)
-  tag = Tag.find(tag_id)
-  SoundTagRelation.create(:sound_id=>sound_id, :tag_id=>tag_id)
-  tag.increment
+puts "start tagging"
+sound_num.times do |sound_id|
 
-  log(debug, logger, tag.id.to_s+", "+sound_id.to_s)
+  tags = Set.new()
+  while tags.size() < tn
+    tags.add(rand(1..tag_num))
+  end
+  tags.each do |tag_id|
+    #SoundTagRelation.create(sound_id: sound_id, tag_id: tag_id)
+    log(debug, logger, "INSERT INTO sound_tag_relations(sound_id, tag_id) VALUES (#{sound_id}, #{tag_id});")
+  end
+
 end
