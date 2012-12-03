@@ -13,6 +13,7 @@ gem 'bootstrap-will_paginate'
 gem "mysql2"
 
 gem 'geocoder'
+gem 'faker'
 
 gem 'annotate', ">=2.5.0"
 

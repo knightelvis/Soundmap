@@ -58,8 +58,10 @@ class ExploreController < ApplicationController
 
     @sounds.each do |sound|
 
-      sound_latitude = sound.location.split(',')[1]
-      sound_longitude = sound.location.split(',')[0]
+      #sound_latitude = sound.location.split(',')[1]
+      #sound_longitude = sound.location.split(',')[0]
+      sound_latitude = sound.longitude
+      sound_longitude = sound.latitude
 
       #Geocoder.search("#{sound_latitude},#{sound_longitude}")[0].formatted_address
 

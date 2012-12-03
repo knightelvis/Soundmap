@@ -62,31 +62,91 @@ class SoundsController < ApplicationController
   # POST /sounds.json
   def create
     @sound = Sound.new(params[:sound])
+    @tags = []
+    params[:item][:tags].each do |tag_title|
+      @tags << Tag.new(title: tag_title)
+    end
 
     respond_to do |format|
-      if @sound.save and store_tags(params[:tmp_tags], @sound.id)
+      begin
+        Sound.transaction do
+          Tag.transaction do
+            SoundTagRelation.transaction do
+              @sound.save!
+              @tags.each do |tag|
+                unless Tag.find_by_title(tag.title)
+                  tag.save!
+                end
+                unless @sound.has_tag?(tag)
+                  @sound.add_tag!(tag)
+                end
+              end
+            end
+          end
+        end
         format.html { redirect_to map_view_index_path, notice: 'Sound was successfully created.' }
-      else
+      rescue
         format.html { render :action => "new" }
         format.json { render :json => @sound.errors, :status => :unprocessable_entity }
       end
     end
+
+    #respond_to do |format|
+    #  if @sound.save and store_tags(params[:tmp_tags], @sound.id)
+    #    format.html { redirect_to map_view_index_path, notice: 'Sound was successfully created.' }
+    #  else
+    #    format.html { render :action => "new" }
+    #    format.json { render :json => @sound.errors, :status => :unprocessable_entity }
+    #  end
+    #end
   end
 
   # PUT /sounds/1
   # PUT /sounds/1.json
   def update
     @sound = Sound.find(params[:id])
+    old_tags = @sound.tags.map { |t| t.title }
+    new_tags = params[:item][:tags]
 
     respond_to do |format|
-      if @sound.update_attributes(params[:sound])
+      begin
+        Sound.transaction do
+          Tag.transaction do
+            SoundTagRelation.transaction do
+
+              @sound.update_attributes(params[:sound])
+              tags_to_remove = old_tags.to_set.difference(new_tags.to_set)
+              tags_to_add = new_tags.to_set.difference(old_tags.to_set)
+              tags_to_remove.each do |tag_title|
+                @sound.remove_tag!(Tag.find_by_title(tag_title))
+              end
+              tags_to_add.each do |tag_title|
+                unless Tag.find_by_title(tag_title)
+                  tag = Tag.create(title: tag_title)
+                end
+                tag ||= Tag.find_by_title(tag_title)
+                @sound.add_tag!(tag)
+              end
+            end
+          end
+        end
         format.html { redirect_to @sound, notice: 'Sound was successfully updated.' }
         format.json { head :no_content }
-      else
+      rescue
         format.html { render action: "edit" }
         format.json { render json: @sound.errors, status: :unprocessable_entity }
       end
     end
+
+    #respond_to do |format|
+    #  if @sound.update_attributes(params[:sound])
+    #    format.html { redirect_to @sound, notice: 'Sound was successfully updated.' }
+    #    format.json { head :no_content }
+    #  else
+    #    format.html { render action: "edit" }
+    #    format.json { render json: @sound.errors, status: :unprocessable_entity }
+    #  end
+    #end
   end
 
   # DELETE /sounds/1

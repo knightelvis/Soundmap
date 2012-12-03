@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121128124921) do
+ActiveRecord::Schema.define(:version => 20121201081553) do
 
   create_table "likes", :force => true do |t|
     t.integer  "user_id"
@@ -50,6 +50,17 @@ ActiveRecord::Schema.define(:version => 20121128124921) do
   add_index "relationships", ["follower_id", "followed_id"], :name => "index_relationships_on_follower_id_and_followed_id", :unique => true
   add_index "relationships", ["follower_id"], :name => "index_relationships_on_follower_id"
 
+  create_table "sound_tag_relations", :force => true do |t|
+    t.integer  "sound_id"
+    t.integer  "tag_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "sound_tag_relations", ["sound_id", "tag_id"], :name => "index_sound_tag_relations_on_sound_id_and_tag_id", :unique => true
+  add_index "sound_tag_relations", ["sound_id"], :name => "index_sound_tag_relations_on_sound_id"
+  add_index "sound_tag_relations", ["tag_id"], :name => "index_sound_tag_relations_on_tag_id"
+
   create_table "sounds", :force => true do |t|
     t.string   "title"
     t.text     "description"
@@ -63,10 +74,12 @@ ActiveRecord::Schema.define(:version => 20121128124921) do
   end
 
   create_table "tags", :force => true do |t|
-    t.string   "titile"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.string   "title"
   end
+
+  add_index "tags", ["title"], :name => "index_tags_on_title", :unique => true
 
   create_table "users", :force => true do |t|
     t.string   "username"
