@@ -44,7 +44,7 @@ $(document).ready ->
 
       success: (data) ->
         # debug
-        #console.log data
+        console.log data
 
         $('#location-search-commit').button('reset')
         $('#loading-bar').hide()
@@ -62,8 +62,8 @@ $(document).ready ->
 
           html += generateList(location)
 
-          location_lat = parseFloat(location.sound.location.split(',')[1])
-          location_lng = parseFloat(location.sound.location.split(',')[0])
+          location_lat = location.sound.longitude
+          location_lng = location.sound.latitude
 
           map.addMarker
             lat: location_lat

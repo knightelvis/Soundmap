@@ -53,7 +53,12 @@ class ExploreController < ApplicationController
     #@current_location = request.location
     @current_location = Geocoder.search(params[:location])[0]
     @distance = params[:distance].to_f
-    @sounds = Sound.all
+    @sounds = Sound.where(
+        'longitude > ? AND longitude < ? AND latitude > ? AND latitude < ?',
+        @current_location.latitude - 0.03, @current_location.latitude + 0.031,
+        @current_location.longitude - 0.03, @current_location.longitude + 0.03
+    )
+    puts 'gogo'
     @locations = []
 
     @sounds.each do |sound|
@@ -64,22 +69,22 @@ class ExploreController < ApplicationController
       sound_longitude = sound.latitude
 
       #Geocoder.search("#{sound_latitude},#{sound_longitude}")[0].formatted_address
-
+      #
       dist = Geocoder::Calculations.distance_between(
           [@current_location.latitude, @current_location.longitude],
           [sound_latitude, sound_longitude]
       )
 
-      if dist <= @distance
-        @locations << {
-            'sound' => sound,
-            'user_id' => sound.user.id,
-            'username' => sound.user.email,
-            'data' => 'A Place', #Geocoder.search(sound.location.split(',')[1] + ',' + sound.location.split(',')[0])[0].formatted_address,
-            'distance' => dist,
-            'like' => like(sound.id)
-        }
-      end
+      #if dist <= @distance
+      @locations << {
+          'sound' => sound,
+          'user_id' => sound.user.id,
+          'username' => sound.user.email,
+          'data' => 'A Place', #Geocoder.search(sound.location.split(',')[1] + ',' + sound.location.split(',')[0])[0].formatted_address,
+          'distance' => dist,
+          'like' => like(sound.id)
+      }
+      #end
 
     end
 
