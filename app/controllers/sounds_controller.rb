@@ -19,7 +19,7 @@ class SoundsController < ApplicationController
     minY = params[:minX].to_f
 
     @sounds = Sound.where('latitude > ? AND latitude < ? AND longitude > ? AND longitude < ?',
-      minX, maxX, minY, maxY)
+      minY, maxY, minX, maxX)
 
     respond_to do |format|
       format.json {render json: @sounds }
