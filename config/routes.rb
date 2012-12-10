@@ -1,7 +1,11 @@
 Soundmap::Application.routes.draw do
   devise_for :users
 
-  resources :sounds
+  resources :sounds do
+    member do
+      post :newtest
+    end
+  end
   resources :map_view
   resources :explore
 
