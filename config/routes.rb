@@ -29,6 +29,7 @@ Soundmap::Application.routes.draw do
   match "/soundsjsontest" => "sounds#soundsjsontest"
   match "/exploretest" => "explore#nearbytest"
   match "/newtest" => "sounds#newtest"
+  match "/tagshowtest" => "tags#showtest"
 
   #resources :static_pages
 

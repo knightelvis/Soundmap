@@ -1,0 +1,19 @@
+<div class="container">
+  <h3>Tag &ldquo;<%= @tag.title %>&rdquo;<span class="small">with <%= @sounds.size %> related sounds</span></h3>
+
+  <div class="sound-item-box">
+    <% @sounds.each do |sound| %>
+        <div class="sound-item">
+          <div class="sound-item-title"><%= link_to sound.title, "/sounds/#{sound.id}" %></div>
+          <div class="pull-right">
+            <% sound.tags.each do |tag| %>
+                <span class="label label-info"><%= link_to tag.title, "/tags/#{tag.id}" %></span>
+            <% end %>
+          </div>
+          by <%= link_to sound.user.email, "/users/#{sound.user.id}" %>
+        </div>
+    <% end %>
+  </div>
+  <%= will_paginate @sounds %>
+
+</div>
