@@ -1,6 +1,6 @@
 class SoundsController < ApplicationController
 
-  before_filter :authenticate_user!, except: [:index, :show]
+  before_filter :authenticate_user!, except: [:index, :show, :soundsjsontest, :newtest]
 
   # GET /sounds
   # GET /sounds.json
@@ -9,6 +9,16 @@ class SoundsController < ApplicationController
 
     respond_to do |format|
       format.json { render json: @sounds }
+    end
+  end
+
+  def soundsjsontest
+    @sound = Sound.find(rand(1..100000))
+    @tags = @sound.tags
+
+    respond_to do |format|
+      format.html # show.html.erb
+      format.json { render json: {sound: @sound, tags: @tags} }
     end
   end
 
@@ -99,6 +109,38 @@ class SoundsController < ApplicationController
     #    format.json { render :json => @sound.errors, :status => :unprocessable_entity }
     #  end
     #end
+  end
+
+  def newtest
+    @sound = Sound.new(params[:sound])
+    @tags = []
+    params[:item][:tags].each do |tag_title|
+      @tags << Tag.new(title: tag_title)
+    end
+
+    respond_to do |format|
+      begin
+        Sound.transaction do
+          Tag.transaction do
+            SoundTagRelation.transaction do
+              @sound.save!
+              @tags.each do |tag|
+                unless Tag.find_by_title(tag.title)
+                  tag.save!
+                end
+                unless @sound.has_tag?(tag)
+                  @sound.add_tag!(tag)
+                end
+              end
+            end
+          end
+        end
+        format.html { redirect_to map_view_index_path, notice: 'Sound was successfully created.' }
+      rescue
+        format.html { render :action => "new" }
+        format.json { render :json => @sound.errors, :status => :unprocessable_entity }
+      end
+    end
   end
 
   # PUT /sounds/1

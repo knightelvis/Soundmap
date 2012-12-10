@@ -24,6 +24,11 @@ Soundmap::Application.routes.draw do
   match "/user/recent/:id" => "user#recent"
   match '/sounds/:id/update_tags', :controller => 'sounds', :action => 'update_tags'
   match "/lookup" => "sounds#get_sounds_in_bound"
+  match "/hometest" => "map_view#hometest"
+  match "/usershowtest" => "users#showtest"
+  match "/soundsjsontest" => "sounds#soundsjsontest"
+  match "/exploretest" => "explore#nearbytest"
+  match "/newtest" => "sounds#newtest"
 
   #resources :static_pages
 
