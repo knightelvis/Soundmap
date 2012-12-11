@@ -1,6 +1,8 @@
 class MapViewController < ApplicationController
 
   before_filter :authenticate_user!, except: [:hometest]
+  caches_page :hometest
+  expires_cache :controller => 'map_view_controller', :action => 'hometest'
 
   def index
 
@@ -14,9 +16,9 @@ class MapViewController < ApplicationController
 
     @current_page = 'home'
     @user_id = rand(1..1000)
-    @user = User.find(@user_id)
-    @sounds = @user.sounds
-    @feed_items = @user.feed.paginate(:page => params[:page], :per_page => 20)
+    @user = data_cache('user' + @user_id.to_s) { User.find(@user_id) }
+    @sounds = data_cache('sound' + @user_id.to_s) { @user.sounds }
+    @feed_items = data_cache('feed' + @user_id.to_s) { @user.feed.paginate(:page => params[:page], :per_page => 20) }
 
   end
 
