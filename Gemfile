@@ -12,6 +12,8 @@ gem 'bootstrap-will_paginate'
 
 gem "mysql2"
 
+gem 'dalli'
+
 gem 'geocoder'
 gem 'faker'
 

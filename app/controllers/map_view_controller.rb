@@ -1,8 +1,6 @@
 class MapViewController < ApplicationController
 
   before_filter :authenticate_user!, except: [:hometest]
-  caches_page :hometest
-  expires_cache :controller => 'map_view_controller', :action => 'hometest'
 
   def index
 

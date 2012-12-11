@@ -3,9 +3,9 @@ class ApplicationController < ActionController::Base
 
   private
   def data_cache(key)
-    unless output = CACHE.get(key)
+    unless output = Rails.cache.read(key)
       output = yield
-      CACHE.set(key, output, 1.hour)
+      Rails.cache.write(key, output, :expires_in => 60)
     end
     return output
   end
